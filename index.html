@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YM TMT Trade Checklist</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0f0f0f;
+    --surface: #1a1a1a;
+    --surface2: #222222;
+    --surface3: #2a2a2a;
+    --border: #2e2e2e;
+    --border2: #3a3a3a;
+    --text: #e8e6e0;
+    --text2: #9a9890;
+    --text3: #5a5856;
+    --green: #1D9E75;
+    --green-light: #0f3d2e;
+    --green-text: #5DCAA5;
+    --red: #E24B4A;
+    --red-light: #3d1212;
+    --red-text: #f09595;
+    --blue: #378ADD;
+    --blue-light: #0d2540;
+    --blue-text: #85B7EB;
+    --amber: #BA7517;
+    --amber-light: #2e1c05;
+    --amber-text: #EF9F27;
+    --radius: 8px;
+    --radius-lg: 12px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  .app { max-width: 680px; margin: 0 auto; padding: 24px 16px 60px; }
+
+  /* Header */
+  .header { margin-bottom: 28px; }
+  .header-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
+  .header h1 { font-size: 20px; font-weight: 600; color: var(--text); letter-spacing: -0.3px; }
+  .header p { font-size: 12px; color: var(--text3); }
+  .date-badge { font-size: 11px; font-weight: 500; color: var(--text2); background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; white-space: nowrap; flex-shrink: 0; }
+
+  /* Direction toggle */
+  .dir-wrap { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 24px; }
+  .dir-btn {
+    padding: 10px 8px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border2);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    background: var(--surface);
+    color: var(--text2);
+    transition: all 0.15s;
+    text-align: center;
+  }
+  .dir-btn:hover { border-color: var(--border2); background: var(--surface2); color: var(--text); }
+  .dir-btn.active-long { background: var(--green-light); border-color: var(--green); color: var(--green-text); }
+  .dir-btn.active-short { background: var(--red-light); border-color: var(--red); color: var(--red-text); }
+  .dir-btn.active-scalp { background: var(--blue-light); border-color: var(--blue); color: var(--blue-text); }
+  .dir-label { font-size: 10px; display: block; margin-top: 2px; opacity: 0.7; font-weight: 400; }
+
+  /* Empty state */
+  .empty-state { text-align: center; padding: 48px 24px; color: var(--text3); }
+  .empty-state .icon { font-size: 32px; margin-bottom: 12px; }
+  .empty-state p { font-size: 13px; }
+
+  /* Section */
+  .section { margin-bottom: 16px; }
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 6px;
+    padding-left: 2px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* Card */
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+
+  /* Check row */
+  .check-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.1s;
+    user-select: none;
+  }
+  .check-row:last-child { border-bottom: none; }
+  .check-row:hover { background: var(--surface2); }
+  .check-row.checked { background: var(--surface2); }
+  .check-row.stop-row { border-left: 3px solid var(--red); }
+
+  .checkbox {
+    width: 18px; height: 18px;
+    border: 1.5px solid var(--border2);
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+  .check-row.checked .checkbox { background: var(--green); border-color: var(--green); }
+  .check-row.stop-row.checked .checkbox { background: var(--red); border-color: var(--red); }
+  .checkmark { display: none; }
+  .check-row.checked .checkmark { display: block; }
+
+  .check-content { flex: 1; min-width: 0; }
+  .check-title { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.4; }
+  .check-row.checked .check-title { color: var(--text3); text-decoration: line-through; }
+  .check-sub { font-size: 11.5px; color: var(--text2); margin-top: 3px; line-height: 1.4; }
+  .stop-label { font-size: 10px; font-weight: 600; color: var(--red-text); background: var(--red-light); border: 1px solid var(--red); border-radius: 4px; padding: 1px 6px; margin-left: 8px; vertical-align: middle; }
+
+  /* Progress */
+  .progress-wrap { margin-bottom: 20px; }
+  .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .progress-label { font-size: 12px; color: var(--text2); }
+  .progress-pct { font-size: 12px; font-weight: 600; color: var(--text); }
+  .progress-bar-bg { height: 3px; background: var(--surface3); border-radius: 2px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; border-radius: 2px; transition: width 0.3s, background 0.3s; background: var(--green); }
+  .progress-bar-fill.short { background: var(--red); }
+  .progress-bar-fill.scalp { background: var(--blue); }
+
+  /* Status */
+  .status-box {
+    padding: 12px 14px;
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    display: none;
+    border: 1px solid transparent;
+  }
+  .status-box.ready { display: block; background: var(--green-light); border-color: var(--green); color: var(--green-text); }
+  .status-box.partial { display: block; background: var(--amber-light); border-color: var(--amber); color: var(--amber-text); }
+
+  /* Action row */
+  .action-row { display: flex; gap: 8px; margin-bottom: 28px; }
+  .btn {
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid var(--border2);
+    background: var(--surface);
+    color: var(--text2);
+    transition: all 0.15s;
+  }
+  .btn:hover { background: var(--surface2); color: var(--text); }
+  .btn-primary { background: var(--green-light); border-color: var(--green); color: var(--green-text); }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-primary.short { background: var(--red-light); border-color: var(--red); color: var(--red-text); }
+  .btn-primary.scalp { background: var(--blue-light); border-color: var(--blue); color: var(--blue-text); }
+
+  /* Prohibited */
+  .prohib-wrap { margin-bottom: 28px; }
+  .prohib-card { background: var(--red-light); border: 1px solid #5a1f1f; border-radius: var(--radius-lg); overflow: hidden; }
+  .prohib-header { padding: 10px 14px; border-bottom: 1px solid #5a1f1f; }
+  .prohib-header span { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red-text); }
+  .prohib-item { display: flex; align-items: flex-start; gap: 10px; padding: 8px 14px; border-bottom: 1px solid #3d1212; }
+  .prohib-item:last-child { border-bottom: none; }
+  .prohib-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--red); flex-shrink: 0; margin-top: 6px; }
+  .prohib-text { font-size: 12px; color: var(--red-text); line-height: 1.4; }
+
+  /* Log */
+  .log-wrap { border-top: 1px solid var(--border); padding-top: 20px; }
+  .log-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .log-title { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); }
+  .log-clear { font-size: 11px; color: var(--text3); background: none; border: none; cursor: pointer; padding: 2px 0; text-decoration: underline; }
+  .log-clear:hover { color: var(--text2); }
+  .log-empty { font-size: 12px; color: var(--text3); font-style: italic; }
+  .log-list { display: flex; flex-direction: column; gap: 6px; }
+  .log-entry {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 12px;
+  }
+  .log-badge { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 4px; flex-shrink: 0; }
+  .log-badge.long { background: var(--green-light); color: var(--green-text); border: 1px solid var(--green); }
+  .log-badge.short { background: var(--red-light); color: var(--red-text); border: 1px solid var(--red); }
+  .log-badge.scalp { background: var(--blue-light); color: var(--blue-text); border: 1px solid var(--blue); }
+  .log-time { color: var(--text2); flex-shrink: 0; }
+  .log-desc { color: var(--text); flex: 1; }
+  .log-result { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 4px; }
+  .log-result.complete { background: var(--green-light); color: var(--green-text); }
+  .log-result.partial { background: var(--amber-light); color: var(--amber-text); }
+
+  /* Footer */
+  .footer { margin-top: 40px; text-align: center; font-size: 11px; color: var(--text3); }
+  .miss-rule { font-style: italic; }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="header">
+    <div class="header-top">
+      <h1>YM TMT Trade Checklist</h1>
+      <div class="date-badge" id="date-badge"></div>
+    </div>
+    <p>Complete every step in sequence. No discretion. No skipping.</p>
+  </div>
+
+  <div class="dir-wrap">
+    <button class="dir-btn" id="btn-long" onclick="setDir('long')">
+      Long Setup
+      <span class="dir-label">TMA crosses up</span>
+    </button>
+    <button class="dir-btn" id="btn-short" onclick="setDir('short')">
+      Short Setup
+      <span class="dir-label">TMA crosses down</span>
+    </button>
+    <button class="dir-btn" id="btn-scalp" onclick="setDir('scalp')">
+      Scalp Zone
+      <span class="dir-label">Extended from TMA</span>
+    </button>
+  </div>
+
+  <div id="main-content">
+    <div class="empty-state">
+      <div class="icon">&#9654;</div>
+      <p>Select a setup type above to begin.</p>
+    </div>
+  </div>
+
+  <div class="prohib-wrap" id="prohib-wrap" style="display:none;">
+    <div class="section-label">Never do these</div>
+    <div class="prohib-card">
+      <div class="prohib-header"><span>Prohibited — no exceptions</span></div>
+      <div class="prohib-item"><div class="prohib-dot"></div><div class="prohib-text">Enter because price "looks like" it's moving — no TMA cross, no trade</div></div>
+      <div class="prohib-item"><div class="prohib-dot"></div><div class="prohib-text">Enter on news bias alone</div></div>
+      <div class="prohib-item"><div class="prohib-dot"></div><div class="prohib-text">Go full size on the leg-in entry</div></div>
+      <div class="prohib-item"><div class="prohib-dot"></div><div class="prohib-text">Add second half before the retest re-curl confirms</div></div>
+      <div class="prohib-item"><div class="prohib-dot"></div><div class="prohib-text">Trade candles — trade TMA direction only</div></div>
+      <div class="prohib-item"><div class="prohib-dot"></div><div class="prohib-text">Override the exit because "it might keep going"</div></div>
+      <div class="prohib-item"><div class="prohib-dot"></div><div class="prohib-text">Skip a short because you're feeling optimistic</div></div>
+    </div>
+  </div>
+
+  <div class="log-wrap">
+    <div class="log-header">
+      <span class="log-title">Session log</span>
+      <button class="log-clear" onclick="clearLog()">Clear log</button>
+    </div>
+    <div id="log-container"><div class="log-empty">No trades logged yet today.</div></div>
+  </div>
+
+  <div class="footer">
+    <p class="miss-rule">"Miss the move, not the discipline." — ExtremeToMean.com</p>
+  </div>
+
+</div>
+
+<script>
+const CHECKLISTS = {
+  long: [
+    {
+      label: 'Step 1 — Signal',
+      items: [
+        { title: '3M TMA crosses ABOVE 3M TRMA', sub: 'This begins the 15M TMA turn white. No cross = no setup.' },
+        { title: 'Enter HALF size long', sub: 'Leg-in only. Not full size. Not yet.' }
+      ]
+    },
+    {
+      label: 'Step 2 — Confirmation',
+      items: [
+        { title: '3M TMA flattens then re-curls UP above TRMA', sub: 'TMA direction only — not candles. Must hold above TRMA during retest.' },
+        { title: 'Add SECOND HALF — now full size', sub: 'Only after re-curl confirms. Not before.' }
+      ]
+    },
+    {
+      label: 'Step 3 — Exit',
+      items: [
+        { title: '3M TMA turns DOWN → exit full size', sub: 'This is the only exit signal. Not a price target. Not a feeling.' },
+        { title: 'STOP: 3M TMA breaks BELOW TRMA → exit immediately', sub: 'Trade invalidated. Full size out. No waiting for one more candle.', stop: true }
+      ]
+    }
+  ],
+  short: [
+    {
+      label: 'Step 1 — Signal',
+      items: [
+        { title: '3M TMA crosses BELOW 3M TRMA', sub: 'This begins the 15M TMA turn blue. No cross = no setup.' },
+        { title: 'Enter HALF size short', sub: 'Mechanical execution. No discretion. No optimism override.' }
+      ]
+    },
+    {
+      label: 'Step 2 — Confirmation',
+      items: [
+        { title: '3M TMA flattens then re-curls DOWN below TRMA', sub: 'TMA direction only — not candles. Must hold below TRMA during retest.' },
+        { title: 'Add SECOND HALF — now full size', sub: 'Only after re-curl confirms. Not before.' }
+      ]
+    },
+    {
+      label: 'Step 3 — Exit',
+      items: [
+        { title: '3M TMA turns UP → exit full size', sub: 'This is the only exit signal. Not a price target. Not a feeling.' },
+        { title: 'STOP: 3M TMA breaks ABOVE TRMA → exit immediately', sub: 'Trade invalidated. Full size out. No hesitation.', stop: true }
+      ]
+    }
+  ],
+  scalp: [
+    {
+      label: 'Condition',
+      items: [
+        { title: 'Buy Zone label is visible on the chart', sub: 'Price must be visibly extended from the 3M TMA. No label = no scalp.' }
+      ]
+    },
+    {
+      label: 'Entry',
+      items: [
+        { title: 'Enter HALF size only', sub: 'Scalp zone is never full size. Ever.' }
+      ]
+    },
+    {
+      label: 'Exit',
+      items: [
+        { title: 'Target = 3M TMA', sub: 'Exit when price reaches the 3M TMA. Not before. Not after.' },
+        { title: 'Exit at target regardless of momentum', sub: 'This is a reversion-to-mean scalp. Take the target. Close it. Move on.' }
+      ]
+    }
+  ]
+};
+
+let currentDir = null;
+let checked = {};
+let sessionLog = JSON.parse(localStorage.getItem('tmt_log') || '[]');
+
+// Set date badge
+function updateDate() {
+  const now = new Date();
+  document.getElementById('date-badge').textContent = now.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+}
+updateDate();
+setInterval(updateDate, 60000);
+
+function setDir(dir) {
+  if (currentDir === dir) return;
+  currentDir = dir;
+  checked = {};
+  ['btn-long','btn-short','btn-scalp'].forEach(id => {
+    document.getElementById(id).className = 'dir-btn';
+  });
+  const map = { long: 'active-long', short: 'active-short', scalp: 'active-scalp' };
+  document.getElementById('btn-' + dir).className = 'dir-btn ' + map[dir];
+  document.getElementById('prohib-wrap').style.display = 'block';
+  render();
+}
+
+function toggle(id) {
+  checked[id] = !checked[id];
+  render();
+}
+
+function reset() {
+  // Log current state before reset
+  if (currentDir) {
+    const sections = CHECKLISTS[currentDir];
+    let total = 0, done = 0;
+    sections.forEach(s => s.items.forEach(() => { total++; }));
+    Object.values(checked).forEach(v => { if (v) done++; });
+    if (done > 0) {
+      logEntry(currentDir, done, total);
+    }
+  }
+  checked = {};
+  render();
+}
+
+function logEntry(dir, done, total) {
+  const now = new Date();
+  const time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+  const entry = {
+    dir,
+    time,
+    done,
+    total,
+    complete: done === total,
+    ts: now.getTime()
+  };
+  sessionLog.unshift(entry);
+  localStorage.setItem('tmt_log', JSON.stringify(sessionLog.slice(0, 50)));
+  renderLog();
+}
+
+function clearLog() {
+  if (confirm('Clear the session log?')) {
+    sessionLog = [];
+    localStorage.removeItem('tmt_log');
+    renderLog();
+  }
+}
+
+function renderLog() {
+  const container = document.getElementById('log-container');
+  if (sessionLog.length === 0) {
+    container.innerHTML = '<div class="log-empty">No trades logged yet today.</div>';
+    return;
+  }
+  container.innerHTML = '<div class="log-list">' + sessionLog.map(e => `
+    <div class="log-entry">
+      <span class="log-badge ${e.dir}">${e.dir.toUpperCase()}</span>
+      <span class="log-time">${e.time}</span>
+      <span class="log-desc">${e.done} of ${e.total} steps completed</span>
+      <span class="log-result ${e.complete ? 'complete' : 'partial'}">${e.complete ? 'FULL' : 'PARTIAL'}</span>
+    </div>
+  `).join('') + '</div>';
+}
+
+function render() {
+  if (!currentDir) return;
+  const sections = CHECKLISTS[currentDir];
+  let total = 0, done = 0, idx = 0;
+  let html = '';
+
+  sections.forEach(section => {
+    html += `<div class="section"><div class="section-label">${section.label}</div><div class="card">`;
+    section.items.forEach(item => {
+      const id = 'c' + idx;
+      const isChecked = !!checked[id];
+      if (isChecked) done++;
+      total++;
+      const stopClass = item.stop ? ' stop-row' : '';
+      const stopLabel = item.stop ? '<span class="stop-label">STOP</span>' : '';
+      html += `<div class="check-row${isChecked ? ' checked' : ''}${stopClass}" onclick="toggle('${id}')">
+        <div class="checkbox">
+          <svg class="checkmark" width="10" height="8" viewBox="0 0 10 8" fill="none">
+            <path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="check-content">
+          <div class="check-title">${item.title}${stopLabel}</div>
+          <div class="check-sub">${item.sub}</div>
+        </div>
+      </div>`;
+      idx++;
+    });
+    html += '</div></div>';
+  });
+
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  const fillClass = currentDir === 'short' ? 'short' : currentDir === 'scalp' ? 'scalp' : '';
+
+  html += `
+    <div class="progress-wrap">
+      <div class="progress-header">
+        <span class="progress-label">${done} of ${total} steps complete</span>
+        <span class="progress-pct">${pct}%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill ${fillClass}" style="width:${pct}%"></div>
+      </div>
+    </div>
+  `;
+
+  let statusHtml = '';
+  if (done === total && total > 0) {
+    statusHtml = `<div class="status-box ready">All steps confirmed. You are clear to execute. Miss the move, not the discipline.</div>`;
+  } else if (done > 0) {
+    statusHtml = `<div class="status-box partial">Complete all steps before executing. No skipping.</div>`;
+  }
+
+  html += statusHtml;
+  html += `<div class="action-row">
+    <button class="btn btn-primary ${currentDir === 'short' ? 'short' : currentDir === 'scalp' ? 'scalp' : ''}" onclick="reset()">Log &amp; Reset</button>
+    <button class="btn" onclick="checked={}; render();">Clear</button>
+  </div>`;
+
+  document.getElementById('main-content').innerHTML = html;
+  renderLog();
+}
+
+renderLog();
+</script>
+</body>
+</html>
