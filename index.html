@@ -1,9 +1,220 @@
+ChatGPT Plus
+
+
+
+
+With Claude, I had previously built a page via GitHub HTML. I was wondering if you could help me now update it using some new rules and trades without adjusting the look and feel of the page. Here is the link to the page, and I obviously also have access to all of the HTML. https://extremetomean.github.io/tmt-trade-checklist/ let me know what you think. 
+
+Absolutely, Jason. I’ll first inspect the live page so I can understand the current structure and how the checklist is laid out, then I’ll map out the safest way to update the rules/trades while preserving the existing visual design.
+
+Thought for 18s
+Yes, Jason — this is very doable.
+
+I pulled up the live page, and the current structure is clean: it has the TMT Trade Checklist header, contract selector, trade-type tabs, checklist sections, trade details, “Never Do These,” and a session trade log/export area. 
+
+The page currently includes these main trade tabs:
+
+Long Setup — TMA crosses up
+Short Setup — TMA crosses down
+Reversion — TMA → TRMA
+Scalp Zone — Extended from TMA
+Trade Log — Session history 
+
+My read: this should be updated as a content/rules revision, not a design rebuild. In other words, we preserve the CSS, layout, colors, spacing, buttons, tab behavior, and trade-log structure, then only modify:
+
+Trade tab names
+
+Checklist steps
+
+Entry/confirmation/exit rules
+
+Stop rules
+
+Trade detail fields
+
+“Never Do These” rules
+
+Any logging fields that need to match the new trade types
+
+The safest way to do it is for you to send me the current index.html file or paste the HTML here. Then send the new rules/trades you want added or replaced, and I’ll return a clean updated version that keeps the same look and feel.
+
+For best results, send the new rules in this format:
+
+Trade Name:
+Tab Label:
+Trade Type: Long / Short / Reversion / Scalp / etc.
+
+Step 1:
+Main checkbox text:
+Explanation text:
+Optional action checkbox:
+
+Step 2:
+...
+
+Stop Rule:
+Exit Rule:
+Profit Target Rule:
+
+Trade Details Fields:
+- Entry Price
+- Stop Price
+- Target
+- Contracts
+- Notes
+
+Never Do These:
+- Rule 1
+- Rule 2
+- Rule 3
+Bottom line: yes, we can update it without changing the visual identity. Very Stark-approved: swap the engine, keep the suit looking expensive.
+
+
+Screenshot 2026-05-10 at 3.46.49 PM.png
+Screenshot 2026-05-10 at 3.47.19 PM.png
+Screenshot 2026-05-10 at 3.48.02 PM.png
+Screenshot 2026-05-10 at 4.53.04 PM.png
+Screenshot 2026-05-10 at 4.53.32 PM.png
+Screenshot 2026-05-10 at 4.53.58 PM.png
+Correct, I do not want to adjust the look and feel of the page at all. I can provide you with screenshots of all of the new trade details, and you can probably work from that. Attached are the screenshots. One thing you need to know: the scalp trade, the extreme to mean trade, and the reversion to mean trade are long only. The trend trade and the continuation trade can be either long or short, so we will need to figure out how to work those parameters in. Let me know if you have any questions after you look at the screenshots attached, and let me know when you are ready for the existing HTML for the GitHub page. 
+
+Thought for 8s
+Yes, Jason — I can work from these screenshots. They give me enough to rebuild the content/rules side of the page while leaving the look and feel untouched.
+
+Here’s how I’m reading the new structure:
+
+New Trade Plan Structure
+The page should become:
+
+TMT Trade Plan v2
+YM / MYM Futures · TMA + TRMA System · 3M and 15M Timeframes · Five Mechanical Setups
+
+The five setups are:
+
+01 — The Scalp
+Long only, based on price entering the lower Scalp Zone and reverting to the 3M TMA.
+
+02 — Extreme to Mean
+Long only, based on price reaching a major Extreme level and reverting to the MA that generated that Extreme.
+
+03 — Reversion to Mean
+Long only, based on the 3M TMA curling upward toward a separated TRMA above it.
+
+04 — The Trend
+Long or short, based on TRMA slope direction changing.
+
+05 — The Continuation
+Long or short, based on an established trend, TMA pullback toward TRMA, compression, and then re-curl in the trend direction.
+
+Main Adjustment Needed Because of Your Note
+The screenshots still include some short-side language in Trades 01, 02, and 03, but your instruction overrides that.
+
+So I would update them this way:
+
+01 Scalp
+Use only the lower Scalp Zone / long version. Remove or rewrite references to the upper Scalp Zone short setup.
+
+02 Extreme to Mean
+Treat only downside Extreme levels as valid long entries. The target remains the MA that generated the Extreme.
+
+03 Reversion to Mean
+Use only the long version: TMA must curl upward toward a TRMA above it. Remove the short version where TMA curls downward toward a TRMA below it.
+
+04 Trend
+Keep both long and short logic inside the same trade card.
+
+05 Continuation
+Keep both long and short logic inside the same trade card.
+
+How I’ll Preserve the Page
+Once you send the existing HTML, I’ll avoid touching the design layer unless absolutely necessary. That means I will preserve:
+
+Existing CSS
+
+Colors
+
+Fonts
+
+Card styling
+
+Spacing
+
+Buttons
+
+Accordion behavior
+
+Quick reference table layout
+
+Trade detail card layout
+
+Overall page structure
+
+I’ll only update the text, trade rules, setup names, badges, quick-reference rows, and any checklist/log options that need to match the new rules.
+
+One Clarifying Question
+For Trades 04 and 05, do you want the page to show one combined card with both long and short rules inside it, or would you prefer the same visual card style but with clear subsections like:
+
+Long Rules
+Short Rules
+
+That would not change the look and feel; it would just make the rule text cleaner.
+
+I’m ready for the existing HTML whenever you are.
+
+
+
+Pasted text(281).txt
+Document
+FYI, we can remove the YM and MYM futures. These trades work on any underlying on any market. Additionally, the system is called the TMT system, so you can also remove the TMA plus TRM system and the reference to the three- and five-minute timeframes because they are also any-timeframe friendly. Only the scalp trade is limited to the 3-minute time frame. But we are setting all this up off of the 3- and 15-minute time frames because that is what I use the most. As for your one question for trades four and five, I think there should be a clickable subsection that allows the trader to choose whether they're applying it to long or short trades for each. Attached is the current HTML for the existing page. 
+
+Thought for 4m 5s
+Done, Jason. I updated the existing GitHub HTML using your current file as the base. 
+
+
+I kept the same overall dark layout, font feel, card/checklist structure, trade log behavior, and checkbox workflow, but updated the system to the new TMT Trade Checklist v2 rules.
+
+Main updates made:
+
+Removed the YM / MYM-specific framing.
+
+Removed the “TMA + TRMA System” and fixed timeframe framing from the header.
+
+Reframed the page as any market / any underlying / any timeframe.
+
+Kept the Scalp trade marked as 3M only.
+
+Added the five new setups:
+
+01 Scalp — long only
+
+02 Extreme to Mean — long only
+
+03 Reversion to Mean — long only
+
+04 Trend — long or short
+
+05 Continuation — long or short
+
+Added clickable Long Rules / Short Rules subsections for Trend and Continuation.
+
+Added a Quick Reference table at the top based on the new trade plan.
+
+Replaced the old futures contract selector with a generic Instrument + $/Point input so it can work for futures, stocks, crypto, or anything else.
+
+Updated the trade log and CSV export to include setup name, direction, instrument, and point value.
+
+You can download the updated file here:
+
+Download the updated TMT Trade Checklist v2 HTML
+
+You should be able to rename this to index.html and replace the current GitHub Pages file.
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TMT Trade Checklist</title>
+<title>TMT Trade Checklist v2</title>
 <style>
   :root {
     --bg: #0e0e0e;
@@ -17,6 +228,7 @@
     --red: #e05c6a;
     --yellow: #f0c040;
     --blue: #4a90e2;
+    --purple: #8b7cf6;
     --never-bg: #5a1212;
     --never-border: #7a1a1a;
     --never-text: #ffffff;
@@ -50,6 +262,13 @@
     font-weight: 700;
     color: var(--text);
     letter-spacing: 0.5px;
+  }
+
+  .version {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-sub);
+    margin-left: 4px;
   }
 
   .header-left p {
@@ -97,7 +316,7 @@
     white-space: nowrap;
   }
 
-  /* ── Contract Selector ── */
+  /* ── Instrument Selector ── */
   .contract-selector {
     display: flex;
     align-items: center;
@@ -106,6 +325,8 @@
     border: 1px solid var(--border);
     border-radius: 6px;
     padding: 6px 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
 
   .contract-selector label {
@@ -117,6 +338,7 @@
     white-space: nowrap;
   }
 
+  .contract-selector input,
   .contract-selector select {
     background: var(--bg);
     border: 1px solid var(--border);
@@ -130,8 +352,12 @@
     cursor: pointer;
   }
 
+  .contract-selector input:focus,
   .contract-selector select:focus { border-color: #5a6080; }
   .contract-selector select option { background: var(--surface); }
+
+  .instrument-input { width: 90px; }
+  .point-input { width: 70px; }
 
   .contract-info {
     font-size: 11px;
@@ -144,6 +370,60 @@
     background: var(--border);
     margin: 16px 0 20px;
   }
+
+  /* ── Quick Reference ── */
+  .quick-reference { margin-bottom: 24px; }
+
+  .quick-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--text-sub);
+    margin-bottom: 10px;
+  }
+
+  .quick-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .quick-table th {
+    color: var(--text-sub);
+    font-size: 11px;
+    font-weight: 700;
+    text-align: left;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .quick-table td {
+    vertical-align: top;
+    padding: 11px 12px;
+    border-bottom: 1px solid #252525;
+    color: var(--text);
+    font-weight: 600;
+    line-height: 1.45;
+  }
+
+  .quick-table tr:last-child td { border-bottom: none; }
+  .quick-table tr:hover td { background: #181818; }
+
+  .setup-pill {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .pill-scalp { background: #dceeff; color: #0b4275; }
+  .pill-extreme { background: #ffe3e3; color: #842020; }
+  .pill-reversion { background: #fff0d8; color: #663b10; }
+  .pill-trend { background: #e7f5df; color: #255c1d; }
+  .pill-continuation { background: #eceaff; color: #312783; }
 
   /* ── Tabs ── */
   .tabs {
@@ -180,20 +460,90 @@
   .tab:hover { border-color: #4a5070; color: var(--text); }
   .tab:hover .tab-sub { color: var(--text-sub); }
 
-  .tab.active-long      { background: #0d1f10; border-color: var(--green);  color: var(--green);  }
-  .tab.active-long .tab-sub { color: #2a8060; }
-  .tab.active-short     { background: #1e0d0d; border-color: var(--red);    color: var(--red);    }
-  .tab.active-short .tab-sub { color: #804040; }
-  .tab.active-reversion { background: #0d1525; border-color: var(--blue);   color: var(--blue);   }
-  .tab.active-reversion .tab-sub { color: #2a5080; }
-  .tab.active-scalp     { background: #201a08; border-color: var(--yellow); color: var(--yellow); }
-  .tab.active-scalp .tab-sub { color: #806030; }
-  .tab.active-log       { background: var(--surface2); border-color: #505050; color: var(--text); }
+  .tab.active-scalp { background: #0d1525; border-color: var(--blue); color: var(--blue); }
+  .tab.active-scalp .tab-sub { color: #2a5080; }
+  .tab.active-extreme { background: #1e0d0d; border-color: var(--red); color: var(--red); }
+  .tab.active-extreme .tab-sub { color: #804040; }
+  .tab.active-reversion { background: #201a08; border-color: var(--yellow); color: var(--yellow); }
+  .tab.active-reversion .tab-sub { color: #806030; }
+  .tab.active-trend { background: #0d1f10; border-color: var(--green); color: var(--green); }
+  .tab.active-trend .tab-sub { color: #2a8060; }
+  .tab.active-continuation { background: #15112a; border-color: var(--purple); color: var(--purple); }
+  .tab.active-continuation .tab-sub { color: #6f67bb; }
+  .tab.active-log { background: var(--surface2); border-color: #505050; color: var(--text); }
   .tab.active-log .tab-sub { color: var(--text-sub); }
 
   /* ── Panels ── */
   .panel { display: none; }
   .panel.active { display: block; }
+
+  .setup-summary {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+  }
+
+  .setup-summary h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .setup-summary p {
+    font-size: 14px;
+    color: var(--text-sub);
+    line-height: 1.45;
+    margin-top: 2px;
+  }
+
+  .setup-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 8px;
+    vertical-align: 2px;
+    letter-spacing: 0.4px;
+  }
+
+  .badge-long { background: #0d3020; color: var(--green); }
+  .badge-both { background: #202020; color: var(--text-sub); border: 1px solid var(--border); }
+  .badge-3m { background: #0d1525; color: var(--blue); }
+
+  /* ── Direction Subsections ── */
+  .direction-toggle {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .direction-btn {
+    flex: 1;
+    padding: 11px 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-sub);
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: center;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .direction-btn:hover { border-color: #4a5070; color: var(--text); }
+  .direction-btn.active-long { background: #0d1f10; border-color: var(--green); color: var(--green); }
+  .direction-btn.active-short { background: #1e0d0d; border-color: var(--red); color: var(--red); }
+
+  .side-content { display: none; }
+  .side-content.active { display: block; }
 
   /* ── Step sections ── */
   .step-section { margin-bottom: 8px; }
@@ -218,10 +568,13 @@
     background: var(--border);
   }
 
-  .step-label.long      { color: var(--green);  }
-  .step-label.short     { color: var(--red);    }
-  .step-label.reversion { color: var(--blue);   }
-  .step-label.scalp     { color: var(--yellow); }
+  .step-label.long { color: var(--green); }
+  .step-label.short { color: var(--red); }
+  .step-label.reversion { color: var(--yellow); }
+  .step-label.scalp { color: var(--blue); }
+  .step-label.extreme { color: var(--red); }
+  .step-label.trend { color: var(--green); }
+  .step-label.continuation { color: var(--purple); }
 
   /* ── Check items ── */
   .check-group {
@@ -245,7 +598,7 @@
   .check-item:last-child { border-bottom: none; }
   .check-item:hover { background: #222222; }
   .check-item.checked .item-main { opacity: 0.35; text-decoration: line-through; }
-  .check-item.checked .item-sub  { opacity: 0.35; }
+  .check-item.checked .item-sub { opacity: 0.35; }
 
   .check-item.stop-item { border-left: 3px solid var(--red); }
 
@@ -306,11 +659,24 @@
     vertical-align: middle;
   }
 
-  /* ── Progress & counter ── */
-  .progress-wrap {
-    margin-top: 24px;
-    margin-bottom: 16px;
+  .principle-box {
+    background: #f4ead6;
+    border: 1px solid #e0c999;
+    border-radius: 8px;
+    padding: 13px 14px;
+    margin: 16px 0 20px;
+    color: #5c3510;
+    font-size: 14px;
+    line-height: 1.55;
   }
+
+  .principle-box.blue { background: #ddebf7; border-color: #bcd3ed; color: #0b4275; }
+  .principle-box.red { background: #f7dddd; border-color: #edbcbc; color: #842020; }
+  .principle-box.green { background: #e5f2da; border-color: #c5dfa9; color: #255c1d; }
+  .principle-box.purple { background: #e7e6fa; border-color: #c7c3f0; color: #312783; }
+
+  /* ── Progress & counter ── */
+  .progress-wrap { margin-top: 24px; margin-bottom: 16px; }
 
   .progress-row {
     display: flex;
@@ -321,17 +687,9 @@
     margin-bottom: 8px;
   }
 
-  .progress-pct {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text-sub);
-  }
+  .progress-pct { font-size: 13px; font-weight: 700; color: var(--text-sub); }
 
-  .progress-bar {
-    height: 3px;
-    background: var(--border);
-    border-radius: 2px;
-  }
+  .progress-bar { height: 3px; background: var(--border); border-radius: 2px; }
 
   .progress-fill {
     height: 100%;
@@ -359,11 +717,7 @@
     margin-bottom: 14px;
   }
 
-  .fields-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
+  .fields-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
   .field-group label {
     display: block;
@@ -398,11 +752,7 @@
   .span2 { grid-column: span 2; }
 
   /* ── Action buttons ── */
-  .actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 16px;
-  }
+  .actions { display: flex; gap: 10px; margin-top: 16px; }
 
   .btn-log {
     flex: 2;
@@ -535,17 +885,12 @@
     padding: 3px 10px; border-radius: 4px;
   }
 
-  .log-dir.LONG      { background: #0d1f10; color: var(--green);  border: 1px solid #1a4030; }
-  .log-dir.SHORT     { background: #200d10; color: var(--red);    border: 1px solid #4a1520; }
-  .log-dir.REVERSION { background: #0d1525; color: var(--blue);   border: 1px solid #1a3560; }
-  .log-dir.SCALP     { background: #201a08; color: var(--yellow); border: 1px solid #4a3810; }
+  .log-dir.LONG { background: #0d1f10; color: var(--green); border: 1px solid #1a4030; }
+  .log-dir.SHORT { background: #200d10; color: var(--red); border: 1px solid #4a1520; }
 
   .log-time { font-size: 13px; color: var(--text-sub); }
 
-  .log-fields {
-    display: grid; grid-template-columns: repeat(3,1fr);
-    gap: 10px; font-size: 14px;
-  }
+  .log-fields { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; font-size: 14px; }
 
   .log-field { color: var(--text-sub); }
   .log-field span { color: var(--text); display: block; font-weight: 600; }
@@ -567,6 +912,10 @@
     line-height: 1.8;
   }
 
+  @media (max-width: 720px) {
+    .quick-table { display: block; overflow-x: auto; white-space: nowrap; }
+  }
+
   @media (max-width: 600px) {
     .fields-grid { grid-template-columns: 1fr; }
     .span2 { grid-column: span 1; }
@@ -575,7 +924,8 @@
     .tab { min-width: 45%; }
     .header { flex-direction: column; gap: 8px; }
     .header-right { align-items: flex-start; }
-    .contract-selector { flex-wrap: wrap; }
+    .contract-selector { justify-content: flex-start; }
+    .direction-toggle { flex-direction: column; }
   }
 </style>
 </head>
@@ -585,8 +935,8 @@
   <!-- Header -->
   <div class="header">
     <div class="header-left">
-      <h1>TMT Trade Checklist</h1>
-      <p>Complete every step in sequence. No discretion. No skipping.</p>
+      <h1>TMT Trade Checklist <span class="version">v2</span></h1>
+      <p>Five mechanical setups · Any market · Any underlying · Any timeframe</p>
       <div class="header-mottos">
         <span>Decisions Determine Destinations — every checkbox is a decision</span>
         <span>Slow down to speed up — the checklist IS the slow down</span>
@@ -596,541 +946,185 @@
     <div class="header-right">
       <div class="header-date" id="headerDate">--</div>
       <div class="contract-selector">
-        <label>Contract</label>
-        <select id="contractSelect" onchange="updateContractInfo()">
-          <optgroup label="── Full Contracts ──" disabled></optgroup>
-          <option value="YM|5">YM — Full Dow</option>
-          <option value="ES|50">ES — Full S&amp;P 500</option>
-          <option value="NQ|20">NQ — Full Nasdaq</option>
-          <option value="RTY|50">RTY — Full Russell 2000</option>
-          <optgroup label="── Micro Contracts ──" disabled></optgroup>
-          <option value="MYM|0.5" selected>MYM — Micro Dow</option>
-          <option value="MES|5">MES — Micro S&amp;P 500</option>
-          <option value="MNQ|2">MNQ — Micro Nasdaq</option>
-          <option value="M2K|5">M2K — Micro Russell 2000</option>
-          <option value="MCL|1">MCL — Micro Crude Oil</option>
-          <option value="MGC|1">MGC — Micro Gold</option>
-        </select>
-        <span class="contract-info" id="contractInfo">$0.50 / pt</span>
+        <label>Instrument</label>
+        <input class="instrument-input" type="text" id="instrumentInput" placeholder="e.g. ES" value="">
+        <label>$/Point</label>
+        <input class="point-input" type="number" id="pointValueInput" placeholder="1" value="1" step="0.01" min="0" oninput="updatePointInfo()">
+        <span class="contract-info" id="contractInfo">$1.00 / pt</span>
       </div>
     </div>
   </div>
   <div class="divider"></div>
 
+  <!-- Quick Reference -->
+  <div class="quick-reference">
+    <div class="quick-label">Quick Reference</div>
+    <table class="quick-table">
+      <thead>
+        <tr>
+          <th>Setup</th>
+          <th>Trigger</th>
+          <th>Entry</th>
+          <th>Target</th>
+          <th>Stop</th>
+          <th>Frequency</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="setup-pill pill-scalp">01 Scalp</span></td>
+          <td>Price enters lower Scalp Zone</td>
+          <td>C1 on touch · C2 optional on close inside zone</td>
+          <td>Partial at 50% back to 3M TMA · Full at 3M TMA</td>
+          <td>Beyond zone boundary</td>
+          <td>Low–moderate</td>
+        </tr>
+        <tr>
+          <td><span class="setup-pill pill-extreme">02 Extreme</span></td>
+          <td>Price hits downside MMA/TMA Extreme level</td>
+          <td>C1 on touch · C2 optional on close beyond level</td>
+          <td>Partial at 15M TMA · Full at generating MA</td>
+          <td>Beyond Extreme level</td>
+          <td>Low</td>
+        </tr>
+        <tr>
+          <td><span class="setup-pill pill-reversion">03 Reversion</span></td>
+          <td>TMA curls up toward TRMA with space</td>
+          <td>On 3M TMA curl confirmation</td>
+          <td>TRMA</td>
+          <td>TMA curls back down</td>
+          <td>Moderate–high</td>
+        </tr>
+        <tr>
+          <td><span class="setup-pill pill-trend">04 Trend</span></td>
+          <td>TRMA changes direction</td>
+          <td>On TRMA slope flip candle</td>
+          <td>Hold until TRMA reverses</td>
+          <td>TRMA reverses direction</td>
+          <td>Low</td>
+        </tr>
+        <tr>
+          <td><span class="setup-pill pill-continuation">05 Continuation</span></td>
+          <td>TMA pulls back to TRMA then curls</td>
+          <td>On TMA re-curl · TMA must stay on correct side</td>
+          <td>Prior swing high/low or Extreme</td>
+          <td>TMA crosses back through TRMA</td>
+          <td>Moderate</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
   <!-- Tabs -->
   <div class="tabs">
-    <button class="tab active-long" onclick="switchTab('long')">
-      Long Setup<span class="tab-sub">TMA crosses up</span>
+    <button class="tab active-scalp" onclick="switchTab('scalp')">
+      01 Scalp<span class="tab-sub">3M zone-based</span>
     </button>
-    <button class="tab" onclick="switchTab('short')">
-      Short Setup<span class="tab-sub">TMA crosses down</span>
+    <button class="tab" onclick="switchTab('extreme')">
+      02 Extreme<span class="tab-sub">MA extreme levels</span>
     </button>
     <button class="tab" onclick="switchTab('reversion')">
-      Reversion<span class="tab-sub">TMA → TRMA</span>
+      03 Reversion<span class="tab-sub">3M TMA curl</span>
     </button>
-    <button class="tab" onclick="switchTab('scalp')">
-      Scalp Zone<span class="tab-sub">Extended from TMA</span>
+    <button class="tab" onclick="switchTab('trend')">
+      04 Trend<span class="tab-sub">TRMA direction</span>
+    </button>
+    <button class="tab" onclick="switchTab('continuation')">
+      05 Continuation<span class="tab-sub">Pullback re-curl</span>
     </button>
     <button class="tab" onclick="switchTab('log')">
       Trade Log<span class="tab-sub">Session history</span>
     </button>
   </div>
 
-  <!-- ══════════════════════════════════════════ LONG -->
-  <div id="panel-long" class="panel active">
+  <!-- ══════════════════════════════════════════ 01 SCALP -->
+  <div id="panel-scalp" class="panel active">
+    <div class="setup-summary">
+      <h2>01 — The Scalp <span class="setup-badge badge-long">LONG ONLY</span><span class="setup-badge badge-3m">3M ONLY</span></h2>
+      <p>Price stretches into the auto-generated lower Scalp Zone and reverts to the 3M TMA.</p>
+    </div>
 
     <div class="step-section">
-      <div class="step-label long">Step 1 — Signal</div>
+      <div class="step-label scalp">Step 1 — Trigger</div>
       <div class="check-group">
         <div class="check-item" onclick="toggle(this, event)">
           <input type="checkbox">
           <div>
-            <div class="item-main">3M TMA crosses ABOVE 3M TRMA</div>
-            <div class="item-sub">This begins the 15M TMA turn white. No cross = no setup.</div>
+            <div class="item-main">Price touches or enters the lower Scalp Zone.</div>
+            <div class="item-sub">Lower zone only. This setup is long only.</div>
           </div>
         </div>
         <div class="check-item" onclick="toggle(this, event)">
           <input type="checkbox">
           <div>
-            <div class="item-main">Enter HALF size long</div>
-            <div class="item-sub">Leg-in only. Not full size. Not yet.</div>
+            <div class="item-main">Scalp Zone is auto-calculated by the TMT indicator.</div>
+            <div class="item-sub">No manual level creation. Use the generated zone.</div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="step-section">
-      <div class="step-label long">Step 2 — Confirmation</div>
+      <div class="step-label scalp">Step 2 — Entry Rules</div>
       <div class="check-group">
         <div class="check-item" onclick="toggle(this, event)">
           <input type="checkbox">
           <div>
-            <div class="item-main">3M TMA flattens then re-curls UP above TRMA</div>
-            <div class="item-sub">TMA direction only — not candles. Must hold above TRMA during retest.</div>
+            <div class="item-main">Contract 1 — taken the moment price first touches or enters the lower zone.</div>
+            <div class="item-sub">Do not wait for TMA confirmation. Zone touch is the trigger.</div>
           </div>
         </div>
         <div class="check-item" onclick="toggle(this, event)">
           <input type="checkbox">
           <div>
-            <div class="item-main">Add SECOND HALF — now full size</div>
-            <div class="item-sub">Only after re-curl confirms. Not before.</div>
+            <div class="item-main">Contract 2 — optional add if a candle closes inside the zone.</div>
+            <div class="item-sub">Add only after the candle close validates the zone hold.</div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="step-section">
-      <div class="step-label long">Step 3 — Pullback &amp; Re-Entry</div>
+      <div class="step-label scalp">Step 3 — Target</div>
       <div class="check-group">
         <div class="check-item" onclick="toggle(this, event)">
           <input type="checkbox">
           <div>
-            <div class="item-main">15M TMA still WHITE and holding angle</div>
-            <div class="item-sub">Pullback only — 15M trend still intact. Not a reversal.</div>
+            <div class="item-main">Partial exit at the halfway point between zone entry and the 3M TMA.</div>
+            <div class="item-sub">Use the partial to protect the trade if price does not fully revert.</div>
           </div>
         </div>
         <div class="check-item" onclick="toggle(this, event)">
           <input type="checkbox">
           <div>
-            <div class="item-main">3M TMA turned BLUE then re-curls WHITE again → add or re-enter</div>
-            <div class="item-sub">This is the signal — not before the re-curl confirms.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step-section">
-      <div class="step-label long">Step 4 — Profit Taking</div>
-      <div class="check-group">
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">Partial exit taken at first significant higher timeframe level hit</div>
-            <div class="item-sub">If applicable — check when done. Runner continues after partial. Do NOT exit full position here.</div>
+            <div class="item-main">Full exit of the remaining position when price reaches the 3M TMA.</div>
+            <div class="item-sub">The 3M TMA is the mean. Do not turn the scalp into a hope trade.</div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="step-section">
-      <div class="step-label long">Step 5 — Exit</div>
+      <div class="step-label scalp">Step 4 — Stop</div>
       <div class="check-group">
-        <div class="check-item" onclick="toggle(this, event)">
+        <div class="check-item stop-item" onclick="toggle(this, event)">
           <input type="checkbox">
           <div>
-            <div class="item-main">15M TMA turns WHITE to BLUE → exit full position</div>
-            <div class="item-sub">True end of the trade — not the 3M. This is the only full exit signal.</div>
+            <div class="item-main">STOP: Place stop beyond the lower zone boundary <span class="stop-badge">STOP</span></div>
+            <div class="item-sub">The stop belongs outside the zone, opposite the entry direction.</div>
           </div>
         </div>
         <div class="check-item stop-item" onclick="toggle(this, event)">
           <input type="checkbox">
           <div>
-            <div class="item-main">STOP: 3M TMA breaks BELOW TRMA → exit immediately <span class="stop-badge">STOP</span></div>
-            <div class="item-sub">Trade invalidated. Full size out. No waiting for one more candle.</div>
+            <div class="item-main">STOP: If price closes beyond the zone without reversing, exit the full trade <span class="stop-badge">STOP</span></div>
+            <div class="item-sub">No averaging down. The zone failed.</div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="progress-wrap">
-      <div class="progress-row">
-        <span id="long-prog-txt">0 of 0 steps complete</span>
-        <span class="progress-pct" id="long-prog-pct">0%</span>
-      </div>
-      <div class="progress-bar"><div class="progress-fill" id="long-prog-fill"></div></div>
-    </div>
-
-    <div class="trade-details">
-      <div class="trade-details-label">Trade Details</div>
-      <div class="fields-grid">
-        <div class="field-group"><label>Entry Price</label><input type="number" id="long-entry" placeholder="e.g. 42150"></div>
-        <div class="field-group"><label>Stop Price</label><input type="number" id="long-stop" placeholder="e.g. 42080"></div>
-        <div class="field-group"><label>Contracts (Initial)</label><input type="number" id="long-contracts" placeholder="1" min="1"></div>
-        <div class="field-group"><label>Contracts Added</label><input type="number" id="long-contracts-added" placeholder="0" min="0"></div>
-        <div class="field-group"><label>Partial Exit Price</label><input type="number" id="long-partial" placeholder="e.g. 42250"></div>
-        <div class="field-group"><label>Contracts Closed at Partial</label><input type="number" id="long-partial-contracts" placeholder="0" min="0"></div>
-        <div class="field-group"><label>Final Exit Price</label><input type="number" id="long-exit" placeholder="e.g. 42320"></div>
-        <div class="field-group"><label>Result</label>
-          <select id="long-result">
-            <option value="">-- Select --</option>
-            <option>WIN</option><option>LOSS</option><option>SCRATCH</option><option>PARTIAL WIN</option>
-          </select>
-        </div>
-        <div class="field-group span2"><label>Notes</label>
-          <textarea id="long-notes" placeholder="Observations, confluences, mistakes..."></textarea>
-        </div>
-      </div>
-    </div>
-
-    <div class="actions">
-      <button class="btn-log"   onclick="logTrade('LONG')">✓ Log &amp; Reset</button>
-      <button class="btn-clear" onclick="clearPanel('long')">Clear</button>
-    </div>
-
-    <div class="never-section">
-      <div class="never-label">Never Do These</div>
-      <div class="never-box">
-        <div class="never-box-title">Prohibited — No Exceptions</div>
-        <div class="never-item"><div class="never-dot"></div>Enter because price "looks like" it's moving — no TMA cross, no trade</div>
-        <div class="never-item"><div class="never-dot"></div>Enter on news bias alone</div>
-        <div class="never-item"><div class="never-dot"></div>Go full size on the leg-in entry</div>
-        <div class="never-item"><div class="never-dot"></div>Add second half before the retest re-curl confirms</div>
-        <div class="never-item"><div class="never-dot"></div>Trade candles — trade TMA direction only</div>
-        <div class="never-item"><div class="never-dot"></div>Override the exit because "it might keep going"</div>
-        <div class="never-item"><div class="never-dot"></div>Skip a short because you're feeling optimistic</div>
-      </div>
-    </div>
-
-  </div><!-- /long -->
-
-  <!-- ══════════════════════════════════════════ SHORT -->
-  <div id="panel-short" class="panel">
-
-    <div class="step-section">
-      <div class="step-label short">Step 1 — Signal</div>
-      <div class="check-group">
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">3M TMA crosses BELOW 3M TRMA</div>
-            <div class="item-sub">This begins the 15M TMA turn blue. No cross = no setup.</div>
-          </div>
-        </div>
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">Enter HALF size short</div>
-            <div class="item-sub">Leg-in only. Not full size. Not yet.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step-section">
-      <div class="step-label short">Step 2 — Confirmation</div>
-      <div class="check-group">
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">3M TMA flattens then re-curls DOWN below TRMA</div>
-            <div class="item-sub">TMA direction only — not candles. Must hold below TRMA during retest.</div>
-          </div>
-        </div>
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">Add SECOND HALF — now full size</div>
-            <div class="item-sub">Only after re-curl confirms. Not before.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step-section">
-      <div class="step-label short">Step 3 — Pullback &amp; Re-Entry</div>
-      <div class="check-group">
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">15M TMA still BLUE and holding angle</div>
-            <div class="item-sub">Pullback only — 15M trend still intact. Not a reversal.</div>
-          </div>
-        </div>
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">3M TMA turned WHITE then re-curls BLUE again → add or re-enter</div>
-            <div class="item-sub">This is the signal — not before the re-curl confirms.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step-section">
-      <div class="step-label short">Step 4 — Profit Taking</div>
-      <div class="check-group">
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">Partial exit taken at first significant lower timeframe level hit</div>
-            <div class="item-sub">If applicable — check when done. Runner continues after partial. Do NOT exit full position here.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step-section">
-      <div class="step-label short">Step 5 — Exit</div>
-      <div class="check-group">
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">15M TMA turns BLUE to WHITE → exit full position</div>
-            <div class="item-sub">True end of the trade — not the 3M. This is the only full exit signal.</div>
-          </div>
-        </div>
-        <div class="check-item stop-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">STOP: 3M TMA breaks ABOVE TRMA → exit immediately <span class="stop-badge">STOP</span></div>
-            <div class="item-sub">Trade invalidated. Full size out. No waiting for one more candle.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="progress-wrap">
-      <div class="progress-row">
-        <span id="short-prog-txt">0 of 0 steps complete</span>
-        <span class="progress-pct" id="short-prog-pct">0%</span>
-      </div>
-      <div class="progress-bar"><div class="progress-fill" id="short-prog-fill"></div></div>
-    </div>
-
-    <div class="trade-details">
-      <div class="trade-details-label">Trade Details</div>
-      <div class="fields-grid">
-        <div class="field-group"><label>Entry Price</label><input type="number" id="short-entry" placeholder="e.g. 42150"></div>
-        <div class="field-group"><label>Stop Price</label><input type="number" id="short-stop" placeholder="e.g. 42220"></div>
-        <div class="field-group"><label>Contracts (Initial)</label><input type="number" id="short-contracts" placeholder="1" min="1"></div>
-        <div class="field-group"><label>Contracts Added</label><input type="number" id="short-contracts-added" placeholder="0" min="0"></div>
-        <div class="field-group"><label>Partial Exit Price</label><input type="number" id="short-partial" placeholder="e.g. 42050"></div>
-        <div class="field-group"><label>Contracts Closed at Partial</label><input type="number" id="short-partial-contracts" placeholder="0" min="0"></div>
-        <div class="field-group"><label>Final Exit Price</label><input type="number" id="short-exit" placeholder="e.g. 41980"></div>
-        <div class="field-group"><label>Result</label>
-          <select id="short-result">
-            <option value="">-- Select --</option>
-            <option>WIN</option><option>LOSS</option><option>SCRATCH</option><option>PARTIAL WIN</option>
-          </select>
-        </div>
-        <div class="field-group span2"><label>Notes</label>
-          <textarea id="short-notes" placeholder="Observations, confluences, mistakes..."></textarea>
-        </div>
-      </div>
-    </div>
-
-    <div class="actions">
-      <button class="btn-log"   onclick="logTrade('SHORT')">✓ Log &amp; Reset</button>
-      <button class="btn-clear" onclick="clearPanel('short')">Clear</button>
-    </div>
-
-    <div class="never-section">
-      <div class="never-label">Never Do These</div>
-      <div class="never-box">
-        <div class="never-box-title">Prohibited — No Exceptions</div>
-        <div class="never-item"><div class="never-dot"></div>Enter because price "looks like" it's moving — no TMA cross, no trade</div>
-        <div class="never-item"><div class="never-dot"></div>Enter on news bias alone</div>
-        <div class="never-item"><div class="never-dot"></div>Go full size on the leg-in entry</div>
-        <div class="never-item"><div class="never-dot"></div>Add second half before the retest re-curl confirms</div>
-        <div class="never-item"><div class="never-dot"></div>Trade candles — trade TMA direction only</div>
-        <div class="never-item"><div class="never-dot"></div>Override the exit because "it might keep going"</div>
-        <div class="never-item"><div class="never-dot"></div>Skip a short because you're feeling optimistic</div>
-      </div>
-    </div>
-
-  </div><!-- /short -->
-
-  <!-- ══════════════════════════════════════════ REVERSION -->
-  <div id="panel-reversion" class="panel">
-
-    <div class="step-section">
-      <div class="step-label reversion">Step 1 — Condition</div>
-      <div class="check-group">
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">3M TMA is BELOW 3M TRMA</div>
-            <div class="item-sub">Separation must be visible — there is meaningful space between them. No space = no reversion potential.</div>
-          </div>
-        </div>
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">Confirm visible space between TMA and TRMA</div>
-            <div class="item-sub">Discretionary — if TMA and TRMA are nearly touching, skip this trade. Distance is the edge.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step-section">
-      <div class="step-label reversion">Step 2 — Signal</div>
-      <div class="check-group">
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">3M TMA turns BULLISH (slope shifts from down to up)</div>
-            <div class="item-sub">This is the entry trigger. TMA slope change only — not candles, not price action.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step-section">
-      <div class="step-label reversion">Step 3 — Entry</div>
-      <div class="check-group">
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">Enter long — full position</div>
-            <div class="item-sub">Reversion trades use full size at entry. Target is the 3M TRMA.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step-section">
-      <div class="step-label reversion">Step 4 — Target</div>
-      <div class="check-group">
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">Price is moving toward 3M TRMA — trade is active</div>
-            <div class="item-sub">Monitor only. Do not exit early. Target is the TRMA, not an arbitrary level.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step-section">
-      <div class="step-label reversion">Step 5 — Exit</div>
-      <div class="check-group">
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">Price reaches 3M TRMA → exit full position</div>
-            <div class="item-sub">Reversion complete. This is the only exit target. Do not hold through the TRMA.</div>
-          </div>
-        </div>
-        <div class="check-item stop-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">STOP: 3M TMA turns BEARISH before reaching TRMA → exit immediately <span class="stop-badge">STOP</span></div>
-            <div class="item-sub">Trade invalidated. TMA slope reversed. Full exit — no waiting for confirmation.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="progress-wrap">
-      <div class="progress-row">
-        <span id="reversion-prog-txt">0 of 0 steps complete</span>
-        <span class="progress-pct" id="reversion-prog-pct">0%</span>
-      </div>
-      <div class="progress-bar"><div class="progress-fill" id="reversion-prog-fill"></div></div>
-    </div>
-
-    <div class="trade-details">
-      <div class="trade-details-label">Trade Details</div>
-      <div class="fields-grid">
-        <div class="field-group"><label>Entry Price</label><input type="number" id="reversion-entry" placeholder="e.g. 42150"></div>
-        <div class="field-group"><label>3M TRMA Target</label><input type="number" id="reversion-stop" placeholder="e.g. 42300"></div>
-        <div class="field-group"><label>Contracts (Initial)</label><input type="number" id="reversion-contracts" placeholder="1" min="1"></div>
-        <div class="field-group"><label>Contracts Added</label><input type="number" id="reversion-contracts-added" placeholder="0" min="0"></div>
-        <div class="field-group"><label>Partial Exit Price</label><input type="number" id="reversion-partial" placeholder="Optional"></div>
-        <div class="field-group"><label>Contracts Closed at Partial</label><input type="number" id="reversion-partial-contracts" placeholder="0" min="0"></div>
-        <div class="field-group"><label>Final Exit Price</label><input type="number" id="reversion-exit" placeholder="e.g. 42295"></div>
-        <div class="field-group"><label>Result</label>
-          <select id="reversion-result">
-            <option value="">-- Select --</option>
-            <option>WIN</option><option>LOSS</option><option>SCRATCH</option><option>PARTIAL WIN</option>
-          </select>
-        </div>
-        <div class="field-group span2"><label>Notes</label>
-          <textarea id="reversion-notes" placeholder="TMA slope, distance from TRMA, reason for entry..."></textarea>
-        </div>
-      </div>
-    </div>
-
-    <div class="actions">
-      <button class="btn-log"   onclick="logTrade('REVERSION')">✓ Log &amp; Reset</button>
-      <button class="btn-clear" onclick="clearPanel('reversion')">Clear</button>
-    </div>
-
-    <div class="never-section">
-      <div class="never-label">Never Do These</div>
-      <div class="never-box">
-        <div class="never-box-title">Prohibited — No Exceptions</div>
-        <div class="never-item"><div class="never-dot"></div>Take this trade on the short side — long only, always</div>
-        <div class="never-item"><div class="never-dot"></div>Enter before the 3M TMA slope actually turns bullish — slope change is the trigger</div>
-        <div class="never-item"><div class="never-dot"></div>Take the trade when TMA and TRMA are nearly touching — no space = no edge</div>
-        <div class="never-item"><div class="never-dot"></div>Hold through the TRMA hoping for more — TRMA is the target, not a level to break</div>
-        <div class="never-item"><div class="never-dot"></div>Ignore the stop — if TMA turns bearish before TRMA is reached, exit immediately</div>
-        <div class="never-item"><div class="never-dot"></div>Confuse this with the scalp trade — this requires TMA slope change, scalp does not</div>
-      </div>
-    </div>
-
-  </div><!-- /reversion -->
-
-  <!-- ══════════════════════════════════════════ SCALP -->
-  <div id="panel-scalp" class="panel">
-
-    <div class="step-section">
-      <div class="step-label scalp">Step 1 — Signal &amp; Entry</div>
-      <div class="check-group">
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">Price has entered the scalp zone</div>
-            <div class="item-sub">This is the signal and the entry — no waiting for TMA confirmation.</div>
-          </div>
-        </div>
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">Enter full position immediately — long side only</div>
-            <div class="item-sub">No leg-in. Full size at the zone. Profit target is the 3M TMA — reversion back to mean.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step-section">
-      <div class="step-label scalp">Step 2 — Runner Check</div>
-      <div class="check-group">
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">3M TRMA is bullish → partial exit at 3M TMA, leave runner</div>
-            <div class="item-sub">Runner stays on until 3M TRMA turns bearish — that is the runner exit signal.</div>
-          </div>
-        </div>
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">3M TRMA is bearish → full exit at 3M TMA, no runner</div>
-            <div class="item-sub">Do not leave a runner when TRMA is bearish. Full exit only.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step-section">
-      <div class="step-label scalp">Step 3 — Exit</div>
-      <div class="check-group">
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">3M TRMA bullish path — partial exit at 3M TMA taken</div>
-            <div class="item-sub">Runner continues until 3M TRMA turns bearish.</div>
-          </div>
-        </div>
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">3M TRMA bearish path — full exit at 3M TMA taken</div>
-            <div class="item-sub">Trade complete. No runner. Do not re-enter unless price returns to zone.</div>
-          </div>
-        </div>
-        <div class="check-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">Runner exit — 3M TRMA has turned bearish → exit remaining position</div>
-            <div class="item-sub">This is the runner exit signal. No discretion.</div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="principle-box blue"><strong>Key principle:</strong> Direction is determined by zone. For this version, only the lower Scalp Zone is valid. Partial at 50% of the move protects profit if the 3M TMA is not fully reached.</div>
 
     <div class="progress-wrap">
       <div class="progress-row">
@@ -1144,25 +1138,26 @@
       <div class="trade-details-label">Trade Details</div>
       <div class="fields-grid">
         <div class="field-group"><label>Entry Price</label><input type="number" id="scalp-entry" placeholder="e.g. 42150"></div>
-        <div class="field-group"><label>Contracts</label><input type="number" id="scalp-contracts" placeholder="1" min="1"></div>
-        <div class="field-group"><label>3M TMA Target</label><input type="number" id="scalp-target" placeholder="e.g. 42210"></div>
+        <div class="field-group"><label>Stop / Zone Boundary</label><input type="number" id="scalp-stop" placeholder="e.g. 42100"></div>
+        <div class="field-group"><label>Contracts (Initial)</label><input type="number" id="scalp-contracts" placeholder="1" min="1"></div>
+        <div class="field-group"><label>Contracts Added</label><input type="number" id="scalp-contracts-added" placeholder="0" min="0"></div>
         <div class="field-group"><label>Partial Exit Price</label><input type="number" id="scalp-partial" placeholder="e.g. 42190"></div>
         <div class="field-group"><label>Contracts Closed at Partial</label><input type="number" id="scalp-partial-contracts" placeholder="0" min="0"></div>
-        <div class="field-group"><label>Final Exit Price</label><input type="number" id="scalp-exit" placeholder="e.g. 42205"></div>
+        <div class="field-group"><label>Final Exit / 3M TMA</label><input type="number" id="scalp-exit" placeholder="e.g. 42210"></div>
         <div class="field-group"><label>Result</label>
           <select id="scalp-result">
             <option value="">-- Select --</option>
-            <option>WIN</option><option>LOSS</option><option>SCRATCH</option>
+            <option>WIN</option><option>LOSS</option><option>SCRATCH</option><option>PARTIAL WIN</option>
           </select>
         </div>
         <div class="field-group span2"><label>Notes</label>
-          <textarea id="scalp-notes" placeholder="Level targeted, 15M status, reason for scalp..."></textarea>
+          <textarea id="scalp-notes" placeholder="Zone touched, 3M TMA target, partial management..."></textarea>
         </div>
       </div>
     </div>
 
     <div class="actions">
-      <button class="btn-log"   onclick="logTrade('SCALP')">✓ Log &amp; Reset</button>
+      <button class="btn-log" onclick="logTrade('scalp')">✓ Log &amp; Reset</button>
       <button class="btn-clear" onclick="clearPanel('scalp')">Clear</button>
     </div>
 
@@ -1170,22 +1165,769 @@
       <div class="never-label">Never Do These</div>
       <div class="never-box">
         <div class="never-box-title">Prohibited — No Exceptions</div>
-        <div class="never-item"><div class="never-dot"></div>Enter a scalp trade on the short side — long only</div>
-        <div class="never-item"><div class="never-dot"></div>Wait for 3M TMA confirmation before entering — price in zone = entry</div>
-        <div class="never-item"><div class="never-dot"></div>Use a leg-in entry — enter full position immediately</div>
-        <div class="never-item"><div class="never-dot"></div>Skip the runner check — always assess 3M TRMA before managing the exit</div>
-        <div class="never-item"><div class="never-dot"></div>Hold a runner when 3M TRMA is bearish — full exit at 3M TMA, no exceptions</div>
-        <div class="never-item"><div class="never-dot"></div>Exit a runner early when 3M TRMA is still bullish — let it run until TRMA turns</div>
-        <div class="never-item"><div class="never-dot"></div>Chase price if it has already moved away from the scalp zone — no zone, no trade</div>
+        <div class="never-item"><div class="never-dot"></div>Enter a Scalp trade on the short side — this setup is long only.</div>
+        <div class="never-item"><div class="never-dot"></div>Use the upper Scalp Zone for this trade plan.</div>
+        <div class="never-item"><div class="never-dot"></div>Wait for 3M TMA confirmation before entering — lower zone touch is the entry.</div>
+        <div class="never-item"><div class="never-dot"></div>Chase price after it has already moved away from the Scalp Zone.</div>
+        <div class="never-item"><div class="never-dot"></div>Add again after price closes beyond the failed zone.</div>
+        <div class="never-item"><div class="never-dot"></div>Hold past the 3M TMA without a defined runner plan.</div>
+      </div>
+    </div>
+  </div><!-- /scalp -->
+
+  <!-- ══════════════════════════════════════════ 02 EXTREME -->
+  <div id="panel-extreme" class="panel">
+    <div class="setup-summary">
+      <h2>02 — Extreme to Mean <span class="setup-badge badge-long">LONG ONLY</span></h2>
+      <p>Price reaches a downside Extreme level and reverts back to the moving average that generated that Extreme.</p>
+    </div>
+
+    <div class="step-section">
+      <div class="step-label extreme">Step 1 — Trigger Levels</div>
+      <div class="check-group">
+        <div class="check-item" onclick="toggle(this, event)">
+          <input type="checkbox">
+          <div>
+            <div class="item-main">Price reaches the downside 15M MMA Extreme.</div>
+            <div class="item-sub">Full target is the 15M MMA.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this, event)">
+          <input type="checkbox">
+          <div>
+            <div class="item-main">Price reaches the downside Hourly TMA Extreme.</div>
+            <div class="item-sub">Full target is the Hourly TMA.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this, event)">
+          <input type="checkbox">
+          <div>
+            <div class="item-main">Price reaches the downside Hourly MMA Extreme.</div>
+            <div class="item-sub">Full target is the Hourly MMA.</div>
+          </div>
+        </div>
       </div>
     </div>
 
-  </div><!-- /scalp -->
+    <div class="step-section">
+      <div class="step-label extreme">Step 2 — Entry Rules</div>
+      <div class="check-group">
+        <div class="check-item" onclick="toggle(this, event)">
+          <input type="checkbox">
+          <div>
+            <div class="item-main">Contract 1 — taken the moment price first touches or reaches the Extreme level.</div>
+            <div class="item-sub">The downside Extreme touch is the first valid long entry.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this, event)">
+          <input type="checkbox">
+          <div>
+            <div class="item-main">Contract 2 — optional add if a candle closes at or beyond the Extreme level.</div>
+            <div class="item-sub">Add only after the candle close confirms the extension.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-section">
+      <div class="step-label extreme">Step 3 — Target</div>
+      <div class="check-group">
+        <div class="check-item" onclick="toggle(this, event)">
+          <input type="checkbox">
+          <div>
+            <div class="item-main">Partial exit at the 15M TMA when time constraints apply.</div>
+            <div class="item-sub">Mandatory when no overnight hold or session-end risk applies.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this, event)">
+          <input type="checkbox">
+          <div>
+            <div class="item-main">Full exit at the moving average that generated the Extreme.</div>
+            <div class="item-sub">15M MMA Extreme → 15M MMA. H TMA Extreme → H TMA. H MMA Extreme → H MMA.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this, event)">
+          <input type="checkbox">
+          <div>
+            <div class="item-main">If holding toward the full target is not possible due to session end, exit remaining position at close.</div>
+            <div class="item-sub">Do not turn a mechanical reversion trade into overnight exposure.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-section">
+      <div class="step-label extreme">Step 4 — Stop</div>
+      <div class="check-group">
+        <div class="check-item stop-item" onclick="toggle(this, event)">
+          <input type="checkbox">
+          <div>
+            <div class="item-main">STOP: Stop is placed beyond the Extreme level that triggered the entry <span class="stop-badge">STOP</span></div>
+            <div class="item-sub">The trade idea fails beyond the Extreme level.</div>
+          </div>
+        </div>
+        <div class="check-item stop-item" onclick="toggle(this, event)">
+          <input type="checkbox">
+          <div>
+            <div class="item-main">STOP: If price makes a new extreme beyond the entry signal level, exit immediately <span class="stop-badge">STOP</span></div>
+            <div class="item-sub">Do not average in after the level fails.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="principle-box red"><strong>Key principle:</strong> The target moving average always matches the Extreme level that triggered the trade. This setup is long only, so only downside Extreme levels are valid.</div>
+
+    <div class="progress-wrap">
+      <div class="progress-row">
+        <span id="extreme-prog-txt">0 of 0 steps complete</span>
+        <span class="progress-pct" id="extreme-prog-pct">0%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="extreme-prog-fill"></div></div>
+    </div>
+
+    <div class="trade-details">
+      <div class="trade-details-label">Trade Details</div>
+      <div class="fields-grid">
+        <div class="field-group"><label>Entry Price</label><input type="number" id="extreme-entry" placeholder="e.g. 42150"></div>
+        <div class="field-group"><label>Stop / Extreme Level</label><input type="number" id="extreme-stop" placeholder="e.g. 42080"></div>
+        <div class="field-group"><label>Contracts (Initial)</label><input type="number" id="extreme-contracts" placeholder="1" min="1"></div>
+        <div class="field-group"><label>Contracts Added</label><input type="number" id="extreme-contracts-added" placeholder="0" min="0"></div>
+        <div class="field-group"><label>Partial Exit Price</label><input type="number" id="extreme-partial" placeholder="e.g. 42250"></div>
+        <div class="field-group"><label>Contracts Closed at Partial</label><input type="number" id="extreme-partial-contracts" placeholder="0" min="0"></div>
+        <div class="field-group"><label>Final Exit / Target MA</label><input type="number" id="extreme-exit" placeholder="e.g. 42320"></div>
+        <div class="field-group"><label>Result</label>
+          <select id="extreme-result">
+            <option value="">-- Select --</option>
+            <option>WIN</option><option>LOSS</option><option>SCRATCH</option><option>PARTIAL WIN</option>
+          </select>
+        </div>
+        <div class="field-group span2"><label>Notes</label>
+          <textarea id="extreme-notes" placeholder="Extreme level type, target MA, session/time constraint..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn-log" onclick="logTrade('extreme')">✓ Log &amp; Reset</button>
+      <button class="btn-clear" onclick="clearPanel('extreme')">Clear</button>
+    </div>
+
+    <div class="never-section">
+      <div class="never-label">Never Do These</div>
+      <div class="never-box">
+        <div class="never-box-title">Prohibited — No Exceptions</div>
+        <div class="never-item"><div class="never-dot"></div>Take this setup short — Extreme to Mean is long only in this plan.</div>
+        <div class="never-item"><div class="never-dot"></div>Use upside Extreme levels as a short signal.</div>
+        <div class="never-item"><div class="never-dot"></div>Target a random MA — target the MA that generated the Extreme.</div>
+        <div class="never-item"><div class="never-dot"></div>Skip the 15M TMA partial when time constraints apply.</div>
+        <div class="never-item"><div class="never-dot"></div>Average in after price makes a new extreme beyond the signal level.</div>
+        <div class="never-item"><div class="never-dot"></div>Hold overnight just to reach the full target.</div>
+      </div>
+    </div>
+  </div><!-- /extreme -->
+
+  <!-- ══════════════════════════════════════════ 03 REVERSION -->
+  <div id="panel-reversion" class="panel">
+    <div class="setup-summary">
+      <h2>03 — Reversion to Mean <span class="setup-badge badge-long">LONG ONLY</span></h2>
+      <p>The 3M TMA curls upward toward a separated TRMA — fade the TMA back to the TRMA.</p>
+    </div>
+
+    <div class="step-section">
+      <div class="step-label reversion">Step 1 — Required Conditions</div>
+      <div class="check-group">
+        <div class="check-item" onclick="toggle(this, event)">
+          <input type="checkbox">
+          <div>
+            <div class="item-main">Space exists between the 3M TMA and TRMA.</div>
+            <div class="item-sub">They must be separated, not compressed or touching.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this, event)">
+          <input type="checkbox">
+          <div>
+            <div class="item-main">TRMA direction is irrelevant.</div>
+            <div class="item-sub">It can be bullish, bearish, or flat. The space and TMA curl matter.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this, event)">
+          <input type="checkbox">
+          <div>
+            <div class="item-main">The 3M TMA must visibly curl upward toward the TRMA.</div>
+            <div class="item-sub">Long only. The TRMA must be above the TMA.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-section">
+      <div class="step-label reversion">Step 2 — Entry Rules</div>
+      <div class="check-group">
+        <div class="check-item" onclick="toggle(this, event)">
+          <input type="checkbox">
+          <div>
+            <div class="item-main">Enter on the 3M TMA curl.</div>
+            <div class="item-sub">The entry candle is the candle where the TMA changes slope upward toward the TRMA.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this, event)">
+          <input type="checkbox">
+          <div>
+            <div class="item-main">Confirm the TMA is curling toward a TRMA that is above it.</div>
+            <div class="item-sub">No short-side version for this setup.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-section">
+      <div class="step-label reversion">Step 3 — Target</div>
+      <div class="check-group">
+        <div class="check-item" onclick="toggle(this, event)">
+          <input type="checkbox">
+          <div>
+            <div class="item-main">Full exit when price reaches the TRMA.</div>
+            <div class="item-sub">The reversion is complete at the TRMA.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggle(this, event)">
+          <input type="checkbox">
+          <div>
+            <div class="item-main">Partial exit allowed at key OB or support/resistance levels inside the structure.</div>
+            <div class="item-sub">Partial is allowed, but the full mechanical target remains the TRMA.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-section">
+      <div class="step-label reversion">Step 4 — Stop</div>
+      <div class="check-group">
+        <div class="check-item stop-item" onclick="toggle(this, event)">
+          <input type="checkbox">
+          <div>
+            <div class="item-main">STOP: Exit if the 3M TMA curls back down before reaching the TRMA <span class="stop-badge">STOP</span></div>
+            <div class="item-sub">The trade is off when the TMA reverses away from the target.</div>
+          </div>
+        </div>
+        <div class="check-item stop-item" onclick="toggle(this, event)">
+          <input type="checkbox">
+          <div>
+            <div class="item-main">STOP: No discretionary override after the TMA reverses <span class="stop-badge">STOP</span></div>
+            <div class="item-sub">If TMA reverses, the setup is invalidated.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="principle-box"><strong>Key principle:</strong> This is the primary bread-and-butter setup. Trades 01 and 02 revert price to the TMA. This trade reverts the TMA to the TRMA — one structural level higher. Space between the MAs is the non-negotiable prerequisite.</div>
+
+    <div class="progress-wrap">
+      <div class="progress-row">
+        <span id="reversion-prog-txt">0 of 0 steps complete</span>
+        <span class="progress-pct" id="reversion-prog-pct">0%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="reversion-prog-fill"></div></div>
+    </div>
+
+    <div class="trade-details">
+      <div class="trade-details-label">Trade Details</div>
+      <div class="fields-grid">
+        <div class="field-group"><label>Entry Price</label><input type="number" id="reversion-entry" placeholder="e.g. 42150"></div>
+        <div class="field-group"><label>Stop / TMA Reversal Level</label><input type="number" id="reversion-stop" placeholder="e.g. 42080"></div>
+        <div class="field-group"><label>Contracts (Initial)</label><input type="number" id="reversion-contracts" placeholder="1" min="1"></div>
+        <div class="field-group"><label>Contracts Added</label><input type="number" id="reversion-contracts-added" placeholder="0" min="0"></div>
+        <div class="field-group"><label>Partial Exit Price</label><input type="number" id="reversion-partial" placeholder="Optional"></div>
+        <div class="field-group"><label>Contracts Closed at Partial</label><input type="number" id="reversion-partial-contracts" placeholder="0" min="0"></div>
+        <div class="field-group"><label>Final Exit / TRMA</label><input type="number" id="reversion-exit" placeholder="e.g. 42295"></div>
+        <div class="field-group"><label>Result</label>
+          <select id="reversion-result">
+            <option value="">-- Select --</option>
+            <option>WIN</option><option>LOSS</option><option>SCRATCH</option><option>PARTIAL WIN</option>
+          </select>
+        </div>
+        <div class="field-group span2"><label>Notes</label>
+          <textarea id="reversion-notes" placeholder="TMA curl, distance from TRMA, partial level, reason for exit..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn-log" onclick="logTrade('reversion')">✓ Log &amp; Reset</button>
+      <button class="btn-clear" onclick="clearPanel('reversion')">Clear</button>
+    </div>
+
+    <div class="never-section">
+      <div class="never-label">Never Do These</div>
+      <div class="never-box">
+        <div class="never-box-title">Prohibited — No Exceptions</div>
+        <div class="never-item"><div class="never-dot"></div>Take this trade short — Reversion to Mean is long only in this version.</div>
+        <div class="never-item"><div class="never-dot"></div>Enter when the TMA and TRMA are compressed or touching.</div>
+        <div class="never-item"><div class="never-dot"></div>Enter before the 3M TMA visibly curls upward.</div>
+        <div class="never-item"><div class="never-dot"></div>Stay in the trade after the TMA curls back down before reaching the TRMA.</div>
+        <div class="never-item"><div class="never-dot"></div>Hold through the TRMA hoping for more.</div>
+        <div class="never-item"><div class="never-dot"></div>Confuse this with the Scalp or Extreme setups — this is TMA-to-TRMA.</div>
+      </div>
+    </div>
+  </div><!-- /reversion -->
+
+  <!-- ══════════════════════════════════════════ 04 TREND -->
+  <div id="panel-trend" class="panel">
+    <div class="setup-summary">
+      <h2>04 — The Trend <span class="setup-badge badge-both">LONG OR SHORT</span></h2>
+      <p>TRMA changes direction — ride the new trend until it reverses.</p>
+    </div>
+
+    <div class="direction-toggle" data-panel="trend">
+      <button class="direction-btn active-long" data-side="long" onclick="switchSide('trend','long')">Long Rules</button>
+      <button class="direction-btn" data-side="short" onclick="switchSide('trend','short')">Short Rules</button>
+    </div>
+
+    <div id="trend-long" class="side-content active" data-side="long">
+      <div class="step-section">
+        <div class="step-label trend">Step 1 — Trigger</div>
+        <div class="check-group">
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">The TRMA changes slope direction from bearish to bullish.</div>
+              <div class="item-sub">The thick blue MA flips up. That flip is the trade signal.</div>
+            </div>
+          </div>
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">This is the only condition required.</div>
+              <div class="item-sub">No additional filters. The TRMA flip is the complete signal.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-section">
+        <div class="step-label trend">Step 2 — Entry Rules</div>
+        <div class="check-group">
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">Enter long on the candle where the TRMA bullish direction change is confirmed.</div>
+              <div class="item-sub">The flip candle is the entry candle.</div>
+            </div>
+          </div>
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">No additional filters — the TRMA slope change is the complete signal.</div>
+              <div class="item-sub">Do not require TMA, candles, or discretionary confirmation.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-section">
+        <div class="step-label trend">Step 3 — Target</div>
+        <div class="check-group">
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">No fixed price target.</div>
+              <div class="item-sub">Hold for the full duration of the bullish TRMA trend.</div>
+            </div>
+          </div>
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">The next TRMA reversal is the only exit trigger.</div>
+              <div class="item-sub">Let it run until the TRMA flips back down.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-section">
+        <div class="step-label trend">Step 4 — Stop</div>
+        <div class="check-group">
+          <div class="check-item stop-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">STOP: Exit immediately when the TRMA reverses bearish <span class="stop-badge">STOP</span></div>
+              <div class="item-sub">The TRMA is both the entry signal and the exit signal.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="trend-short" class="side-content" data-side="short">
+      <div class="step-section">
+        <div class="step-label short">Step 1 — Trigger</div>
+        <div class="check-group">
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">The TRMA changes slope direction from bullish to bearish.</div>
+              <div class="item-sub">The thick blue MA flips down. That flip is the trade signal.</div>
+            </div>
+          </div>
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">This is the only condition required.</div>
+              <div class="item-sub">No additional filters. The TRMA flip is the complete signal.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-section">
+        <div class="step-label short">Step 2 — Entry Rules</div>
+        <div class="check-group">
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">Enter short on the candle where the TRMA bearish direction change is confirmed.</div>
+              <div class="item-sub">The flip candle is the entry candle.</div>
+            </div>
+          </div>
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">No additional filters — the TRMA slope change is the complete signal.</div>
+              <div class="item-sub">Do not require TMA, candles, or discretionary confirmation.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-section">
+        <div class="step-label short">Step 3 — Target</div>
+        <div class="check-group">
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">No fixed price target.</div>
+              <div class="item-sub">Hold for the full duration of the bearish TRMA trend.</div>
+            </div>
+          </div>
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">The next TRMA reversal is the only exit trigger.</div>
+              <div class="item-sub">Let it run until the TRMA flips back up.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-section">
+        <div class="step-label short">Step 4 — Stop</div>
+        <div class="check-group">
+          <div class="check-item stop-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">STOP: Exit immediately when the TRMA reverses bullish <span class="stop-badge">STOP</span></div>
+              <div class="item-sub">The TRMA is both the entry signal and the exit signal.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="principle-box green"><strong>Key principle:</strong> This is the lowest-frequency, highest-duration setup. When the TRMA flips, you ride the entire trend. Entry is the flip candle. Exit is the next flip. No discretion required at any point.</div>
+
+    <div class="progress-wrap">
+      <div class="progress-row">
+        <span id="trend-prog-txt">0 of 0 steps complete</span>
+        <span class="progress-pct" id="trend-prog-pct">0%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="trend-prog-fill"></div></div>
+    </div>
+
+    <div class="trade-details">
+      <div class="trade-details-label">Trade Details</div>
+      <div class="fields-grid">
+        <div class="field-group"><label>Entry Price</label><input type="number" id="trend-entry" placeholder="e.g. 42150"></div>
+        <div class="field-group"><label>Stop / TRMA Reversal</label><input type="number" id="trend-stop" placeholder="e.g. 42080"></div>
+        <div class="field-group"><label>Contracts (Initial)</label><input type="number" id="trend-contracts" placeholder="1" min="1"></div>
+        <div class="field-group"><label>Contracts Added</label><input type="number" id="trend-contracts-added" placeholder="0" min="0"></div>
+        <div class="field-group"><label>Partial Exit Price</label><input type="number" id="trend-partial" placeholder="Optional"></div>
+        <div class="field-group"><label>Contracts Closed at Partial</label><input type="number" id="trend-partial-contracts" placeholder="0" min="0"></div>
+        <div class="field-group"><label>Final Exit Price</label><input type="number" id="trend-exit" placeholder="e.g. 42320"></div>
+        <div class="field-group"><label>Result</label>
+          <select id="trend-result">
+            <option value="">-- Select --</option>
+            <option>WIN</option><option>LOSS</option><option>SCRATCH</option><option>PARTIAL WIN</option>
+          </select>
+        </div>
+        <div class="field-group span2"><label>Notes</label>
+          <textarea id="trend-notes" placeholder="TRMA flip direction, duration, exit reason..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn-log" onclick="logTrade('trend')">✓ Log &amp; Reset</button>
+      <button class="btn-clear" onclick="clearPanel('trend')">Clear</button>
+    </div>
+
+    <div class="never-section">
+      <div class="never-label">Never Do These</div>
+      <div class="never-box">
+        <div class="never-box-title">Prohibited — No Exceptions</div>
+        <div class="never-item"><div class="never-dot"></div>Enter before the TRMA direction change is confirmed.</div>
+        <div class="never-item"><div class="never-dot"></div>Add extra filters that are not part of the Trend setup.</div>
+        <div class="never-item"><div class="never-dot"></div>Take profit early just because the move feels extended.</div>
+        <div class="never-item"><div class="never-dot"></div>Ignore the TRMA reversal exit.</div>
+        <div class="never-item"><div class="never-dot"></div>Flip direction without selecting the correct Long or Short rules first.</div>
+      </div>
+    </div>
+  </div><!-- /trend -->
+
+  <!-- ══════════════════════════════════════════ 05 CONTINUATION -->
+  <div id="panel-continuation" class="panel">
+    <div class="setup-summary">
+      <h2>05 — The Continuation <span class="setup-badge badge-both">LONG OR SHORT</span></h2>
+      <p>After a trend is established, the TMA pulls back to the TRMA and re-curls — enter the next leg.</p>
+    </div>
+
+    <div class="direction-toggle" data-panel="continuation">
+      <button class="direction-btn active-long" data-side="long" onclick="switchSide('continuation','long')">Long Rules</button>
+      <button class="direction-btn" data-side="short" onclick="switchSide('continuation','short')">Short Rules</button>
+    </div>
+
+    <div id="continuation-long" class="side-content active" data-side="long">
+      <div class="step-section">
+        <div class="step-label continuation">Step 1 — Required Conditions</div>
+        <div class="check-group">
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">A prior bullish trend must already be established.</div>
+              <div class="item-sub">TRMA is directional from Trade 04 context.</div>
+            </div>
+          </div>
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">TMA pulls back toward the TRMA and the two MAs compress.</div>
+              <div class="item-sub">TMA does not cross through the TRMA.</div>
+            </div>
+          </div>
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">TMA remains above the TRMA.</div>
+              <div class="item-sub">For a long continuation, TMA must stay on the correct side.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-section">
+        <div class="step-label continuation">Step 2 — Entry Rules</div>
+        <div class="check-group">
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">Enter when the TMA curls back up in the trend direction after compression.</div>
+              <div class="item-sub">The re-curl after the pullback is the entry signal.</div>
+            </div>
+          </div>
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">Do not enter on the pullback itself.</div>
+              <div class="item-sub">Wait for the TMA re-curl to confirm the next leg.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-section">
+        <div class="step-label continuation">Step 3 — Target</div>
+        <div class="check-group">
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">First target: prior swing high.</div>
+              <div class="item-sub">This is the level the original move failed at or paused near.</div>
+            </div>
+          </div>
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">Second target: TMA Extreme if continuation carries through the prior swing.</div>
+              <div class="item-sub">Only target the Extreme if price continues beyond the prior swing.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-section">
+        <div class="step-label continuation">Step 4 — Stop</div>
+        <div class="check-group">
+          <div class="check-item stop-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">STOP: Exit if the TMA crosses back down through the TRMA <span class="stop-badge">STOP</span></div>
+              <div class="item-sub">The continuation is invalidated.</div>
+            </div>
+          </div>
+          <div class="check-item stop-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">STOP: If price returns into consolidation and TMA re-crosses TRMA, the setup is off <span class="stop-badge">STOP</span></div>
+              <div class="item-sub">Do not keep forcing the continuation.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="continuation-short" class="side-content" data-side="short">
+      <div class="step-section">
+        <div class="step-label short">Step 1 — Required Conditions</div>
+        <div class="check-group">
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">A prior bearish trend must already be established.</div>
+              <div class="item-sub">TRMA is directional from Trade 04 context.</div>
+            </div>
+          </div>
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">TMA pulls back toward the TRMA and the two MAs compress.</div>
+              <div class="item-sub">TMA does not cross through the TRMA.</div>
+            </div>
+          </div>
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">TMA remains below the TRMA.</div>
+              <div class="item-sub">For a short continuation, TMA must stay on the correct side.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-section">
+        <div class="step-label short">Step 2 — Entry Rules</div>
+        <div class="check-group">
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">Enter when the TMA curls back down in the trend direction after compression.</div>
+              <div class="item-sub">The re-curl after the pullback is the entry signal.</div>
+            </div>
+          </div>
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">Do not enter on the pullback itself.</div>
+              <div class="item-sub">Wait for the TMA re-curl to confirm the next leg.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-section">
+        <div class="step-label short">Step 3 — Target</div>
+        <div class="check-group">
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">First target: prior swing low.</div>
+              <div class="item-sub">This is the level the original move failed at or paused near.</div>
+            </div>
+          </div>
+          <div class="check-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">Second target: TMA Extreme if continuation carries through the prior swing.</div>
+              <div class="item-sub">Only target the Extreme if price continues beyond the prior swing.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-section">
+        <div class="step-label short">Step 4 — Stop</div>
+        <div class="check-group">
+          <div class="check-item stop-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">STOP: Exit if the TMA crosses back up through the TRMA <span class="stop-badge">STOP</span></div>
+              <div class="item-sub">The continuation is invalidated.</div>
+            </div>
+          </div>
+          <div class="check-item stop-item" onclick="toggle(this, event)">
+            <input type="checkbox">
+            <div>
+              <div class="item-main">STOP: If price returns into consolidation and TMA re-crosses TRMA, the setup is off <span class="stop-badge">STOP</span></div>
+              <div class="item-sub">Do not keep forcing the continuation.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="principle-box purple"><strong>Key principle:</strong> The trend is already established. You are entering the second or third push — not the initial reversal. The TMA must remain on the correct side of the TRMA at all times. A cross invalidates the trade immediately.</div>
+
+    <div class="progress-wrap">
+      <div class="progress-row">
+        <span id="continuation-prog-txt">0 of 0 steps complete</span>
+        <span class="progress-pct" id="continuation-prog-pct">0%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="continuation-prog-fill"></div></div>
+    </div>
+
+    <div class="trade-details">
+      <div class="trade-details-label">Trade Details</div>
+      <div class="fields-grid">
+        <div class="field-group"><label>Entry Price</label><input type="number" id="continuation-entry" placeholder="e.g. 42150"></div>
+        <div class="field-group"><label>Stop / TRMA Cross</label><input type="number" id="continuation-stop" placeholder="e.g. 42080"></div>
+        <div class="field-group"><label>Contracts (Initial)</label><input type="number" id="continuation-contracts" placeholder="1" min="1"></div>
+        <div class="field-group"><label>Contracts Added</label><input type="number" id="continuation-contracts-added" placeholder="0" min="0"></div>
+        <div class="field-group"><label>Partial Exit / First Target</label><input type="number" id="continuation-partial" placeholder="e.g. 42250"></div>
+        <div class="field-group"><label>Contracts Closed at Partial</label><input type="number" id="continuation-partial-contracts" placeholder="0" min="0"></div>
+        <div class="field-group"><label>Final Exit / Extreme</label><input type="number" id="continuation-exit" placeholder="e.g. 42320"></div>
+        <div class="field-group"><label>Result</label>
+          <select id="continuation-result">
+            <option value="">-- Select --</option>
+            <option>WIN</option><option>LOSS</option><option>SCRATCH</option><option>PARTIAL WIN</option>
+          </select>
+        </div>
+        <div class="field-group span2"><label>Notes</label>
+          <textarea id="continuation-notes" placeholder="Trend context, pullback quality, re-curl candle, target used..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn-log" onclick="logTrade('continuation')">✓ Log &amp; Reset</button>
+      <button class="btn-clear" onclick="clearPanel('continuation')">Clear</button>
+    </div>
+
+    <div class="never-section">
+      <div class="never-label">Never Do These</div>
+      <div class="never-box">
+        <div class="never-box-title">Prohibited — No Exceptions</div>
+        <div class="never-item"><div class="never-dot"></div>Take the Continuation before a trend is already established.</div>
+        <div class="never-item"><div class="never-dot"></div>Enter on the pullback itself — the re-curl is the signal.</div>
+        <div class="never-item"><div class="never-dot"></div>Stay in the trade after the TMA crosses back through the TRMA.</div>
+        <div class="never-item"><div class="never-dot"></div>Force a continuation inside chop or consolidation after the structure fails.</div>
+        <div class="never-item"><div class="never-dot"></div>Use long rules for a short trade or short rules for a long trade.</div>
+      </div>
+    </div>
+  </div><!-- /continuation -->
 
   <!-- ══════════════════════════════════════════ LOG -->
   <div id="panel-log" class="panel">
     <div class="log-actions">
-      <button class="btn-export"   onclick="exportCSV()">⬇ Export Log as CSV</button>
+      <button class="btn-export" onclick="exportCSV()">⬇ Export Log as CSV</button>
       <button class="btn-clearlog" onclick="clearLog()">✕ Clear Log</button>
     </div>
     <div id="log-container">
@@ -1198,29 +1940,24 @@
 <script>
   let tradeLog = [];
 
-  // ── Contract lookup ──────────────────────────────────────────────────────────
-  const CONTRACT_MAP = {
-    'YM':  { label: 'YM',  ppp: 5    },
-    'ES':  { label: 'ES',  ppp: 50   },
-    'NQ':  { label: 'NQ',  ppp: 20   },
-    'RTY': { label: 'RTY', ppp: 50   },
-    'MYM': { label: 'MYM', ppp: 0.5  },
-    'MES': { label: 'MES', ppp: 5    },
-    'MNQ': { label: 'MNQ', ppp: 2    },
-    'M2K': { label: 'M2K', ppp: 5    },
-    'MCL': { label: 'MCL', ppp: 1    },
-    'MGC': { label: 'MGC', ppp: 1    }
+  const SETUPS = {
+    scalp:        { label: '01 SCALP',        csvLabel: 'Scalp',             fixedDirection: 'LONG'  },
+    extreme:      { label: '02 EXTREME',      csvLabel: 'Extreme to Mean',   fixedDirection: 'LONG'  },
+    reversion:    { label: '03 REVERSION',    csvLabel: 'Reversion to Mean', fixedDirection: 'LONG'  },
+    trend:        { label: '04 TREND',        csvLabel: 'Trend',             fixedDirection: null    },
+    continuation: { label: '05 CONTINUATION', csvLabel: 'Continuation',      fixedDirection: null    }
   };
 
-  function getSelectedContract() {
-    const val = document.getElementById('contractSelect').value; // e.g. "MYM|0.5"
-    const sym = val.split('|')[0];
-    return CONTRACT_MAP[sym] || { label: sym, ppp: parseFloat(val.split('|')[1]) || 1 };
+  // ── Instrument and point value ──────────────────────────────────────────────
+  function getInstrumentInfo() {
+    const label = (document.getElementById('instrumentInput')?.value || '').trim() || '—';
+    const ppp = parseFloat(document.getElementById('pointValueInput')?.value) || 1;
+    return { label, ppp };
   }
 
-  function updateContractInfo() {
-    const c = getSelectedContract();
-    document.getElementById('contractInfo').textContent = '$' + c.ppp.toFixed(c.ppp < 1 ? 2 : 0) + ' / pt';
+  function updatePointInfo() {
+    const c = getInstrumentInfo();
+    document.getElementById('contractInfo').textContent = '$' + c.ppp.toFixed(c.ppp < 1 ? 2 : 2) + ' / pt';
   }
 
   // ── P&L calculation (two-leg weighted) ───────────────────────────────────────
@@ -1229,22 +1966,21 @@
   function calcPnL(t, ppp) {
     const e    = parseFloat(t.entry);
     const x    = parseFloat(t.exit);
-    const pPx  = parseFloat(t.partial);           // partial exit price
-    const pCt  = parseInt(t.partialContracts) || 0; // contracts closed at partial
+    const pPx  = parseFloat(t.partial);
+    const pCt  = parseInt(t.partialContracts) || 0;
     const init = parseInt(t.contracts) || 1;
     const added = parseInt(t.contractsAdded) || 0;
     const totalCt = init + added;
 
     if (isNaN(e) || isNaN(x)) return null;
 
-    const dir = t.direction === 'SHORT' ? -1 : 1; // SHORT flips subtraction
+    const dir = t.direction === 'SHORT' ? -1 : 1;
 
     let leg1pts = 0, leg1pnl = 0, leg1ct = 0;
     let leg2pts = 0, leg2pnl = 0, leg2ct = 0;
     let hasPartial = false;
 
     if (!isNaN(pPx) && pCt > 0) {
-      // Two-leg trade
       hasPartial = true;
       leg1ct  = pCt;
       leg2ct  = Math.max(totalCt - pCt, 0);
@@ -1253,14 +1989,13 @@
       leg1pnl = leg1pts * leg1ct * ppp;
       leg2pnl = leg2pts * leg2ct * ppp;
     } else {
-      // Single-leg trade (no partial or no contracts specified at partial)
       leg2ct  = totalCt;
       leg2pts = dir * (x - e);
       leg2pnl = leg2pts * leg2ct * ppp;
     }
 
     const totalpts = hasPartial
-      ? ((leg1pts * leg1ct) + (leg2pts * leg2ct)) / totalCt  // weighted avg pts
+      ? ((leg1pts * leg1ct) + (leg2pts * leg2ct)) / totalCt
       : leg2pts;
     const totalpnl = leg1pnl + leg2pnl;
 
@@ -1270,7 +2005,7 @@
   // ── Init ─────────────────────────────────────────────────────────────────────
   setDate();
   updateAllProgress();
-  updateContractInfo();
+  updatePointInfo();
 
   function setDate() {
     const d = new Date();
@@ -1282,10 +2017,43 @@
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.tab').forEach(t => t.className = 'tab');
     document.getElementById('panel-' + name).classList.add('active');
-    const map = ['long','short','reversion','scalp','log'];
-    const cls = ['active-long','active-short','active-reversion','active-scalp','active-log'];
+    const map = ['scalp','extreme','reversion','trend','continuation','log'];
+    const cls = ['active-scalp','active-extreme','active-reversion','active-trend','active-continuation','active-log'];
     const i = map.indexOf(name);
     if (i >= 0) document.querySelectorAll('.tab')[i].classList.add(cls[i]);
+    updateProgress(name);
+  }
+
+  function switchSide(panelId, side) {
+    const panel = document.getElementById('panel-' + panelId);
+    panel.querySelectorAll('.direction-btn').forEach(btn => {
+      btn.className = 'direction-btn';
+      if (btn.dataset.side === side) btn.classList.add(side === 'long' ? 'active-long' : 'active-short');
+    });
+    panel.querySelectorAll('.side-content').forEach(content => {
+      content.classList.toggle('active', content.dataset.side === side);
+    });
+    updateProgress(panelId);
+  }
+
+  function getActiveSide(panelId) {
+    const panel = document.getElementById('panel-' + panelId);
+    const active = panel.querySelector('.direction-btn.active-long, .direction-btn.active-short');
+    if (!active) return 'LONG';
+    return active.dataset.side === 'short' ? 'SHORT' : 'LONG';
+  }
+
+  function getChecklistScope(panelId) {
+    const panel = document.getElementById('panel-' + panelId);
+    if (!panel) return null;
+    const activeSide = panel.querySelector('.side-content.active');
+    return activeSide || panel;
+  }
+
+  function getChecklistBoxes(panelId) {
+    const scope = getChecklistScope(panelId);
+    if (!scope) return [];
+    return scope.querySelectorAll('input[type="checkbox"]');
   }
 
   function toggle(item, event) {
@@ -1302,8 +2070,8 @@
   function updateProgress(id) {
     const panel = document.getElementById('panel-' + id);
     if (!panel) return;
-    const all = panel.querySelectorAll('input[type="checkbox"]');
-    const chk = panel.querySelectorAll('input[type="checkbox"]:checked');
+    const all = getChecklistBoxes(id);
+    const chk = Array.from(all).filter(cb => cb.checked);
     const pct = all.length ? Math.round(chk.length / all.length * 100) : 0;
     const fill  = document.getElementById(id + '-prog-fill');
     const txt   = document.getElementById(id + '-prog-txt');
@@ -1316,44 +2084,41 @@
     if (pctEl) pctEl.textContent = pct + '%';
   }
 
-  function updateAllProgress() { ['long','short','reversion','scalp'].forEach(updateProgress); }
+  function updateAllProgress() { ['scalp','extreme','reversion','trend','continuation'].forEach(updateProgress); }
 
-  function logTrade(dir) {
-    const p = dir.toLowerCase();
-    const panel = document.getElementById('panel-' + p);
-    const all = panel.querySelectorAll('input[type="checkbox"]');
-    const chk = panel.querySelectorAll('input[type="checkbox"]:checked');
-
-    // Handle target field for scalp (uses scalp-target instead of scalp-stop)
-    const stopVal = p === 'scalp'
-      ? (document.getElementById('scalp-target')?.value || '')
-      : (document.getElementById(p + '-stop')?.value || '');
-
-    const contract = getSelectedContract();
+  function logTrade(setupId) {
+    const setup = SETUPS[setupId];
+    const panel = document.getElementById('panel-' + setupId);
+    const all = getChecklistBoxes(setupId);
+    const chk = Array.from(all).filter(cb => cb.checked);
+    const direction = setup.fixedDirection || getActiveSide(setupId);
+    const instrument = getInstrumentInfo();
 
     tradeLog.push({
       id:               tradeLog.length + 1,
       date:             new Date().toLocaleDateString('en-US'),
       time:             new Date().toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit', second:'2-digit'}),
-      direction:        dir,
-      contract:         contract.label,
-      ppp:              contract.ppp,
-      entry:            document.getElementById(p + '-entry')?.value || '',
-      stop:             stopVal,
-      partial:          document.getElementById(p + '-partial')?.value || '',
-      partialContracts: document.getElementById(p + '-partial-contracts')?.value || '0',
-      exit:             document.getElementById(p + '-exit')?.value || '',
-      contracts:        document.getElementById(p + '-contracts')?.value || '1',
-      contractsAdded:   document.getElementById(p + '-contracts-added')?.value || '0',
-      result:           document.getElementById(p + '-result')?.value || '',
-      notes:            document.getElementById(p + '-notes')?.value || '',
+      setup:            setup.label,
+      setupName:        setup.csvLabel,
+      direction:        direction,
+      contract:         instrument.label,
+      ppp:              instrument.ppp,
+      entry:            document.getElementById(setupId + '-entry')?.value || '',
+      stop:             document.getElementById(setupId + '-stop')?.value || '',
+      partial:          document.getElementById(setupId + '-partial')?.value || '',
+      partialContracts: document.getElementById(setupId + '-partial-contracts')?.value || '0',
+      exit:             document.getElementById(setupId + '-exit')?.value || '',
+      contracts:        document.getElementById(setupId + '-contracts')?.value || '1',
+      contractsAdded:   document.getElementById(setupId + '-contracts-added')?.value || '0',
+      result:           document.getElementById(setupId + '-result')?.value || '',
+      notes:            document.getElementById(setupId + '-notes')?.value || '',
       pct:              all.length ? Math.round(chk.length / all.length * 100) : 0,
       done:             chk.length,
       total:            all.length
     });
 
     renderLog();
-    clearPanel(p);
+    clearPanel(setupId);
     switchTab('log');
   }
 
@@ -1376,7 +2141,7 @@
     }
 
     c.innerHTML = tradeLog.slice().reverse().map(t => {
-      const ppp    = t.ppp || getSelectedContract().ppp;
+      const ppp = t.ppp || 1;
       const result = calcPnL(t, ppp);
 
       let pnlHtml = '';
@@ -1384,8 +2149,8 @@
 
       if (result) {
         const col = result.totalpnl >= 0 ? '#3ecf8e' : '#e05c6a';
-        const pnlSign  = result.totalpnl >= 0 ? '+' : '';
-        const ptsSign  = result.totalpts >= 0 ? '+' : '';
+        const pnlSign = result.totalpnl >= 0 ? '+' : '';
+        const ptsSign = result.totalpts >= 0 ? '+' : '';
         pnlHtml = `<span style="font-size:13px;color:${col};margin-left:10px;">${pnlSign}$${result.totalpnl.toFixed(2)} (${ptsSign}${result.totalpts.toFixed(1)} pts)</span>`;
 
         if (result.hasPartial) {
@@ -1400,12 +2165,12 @@
         }
       }
 
-      const pl = t.direction === 'SCALP' ? 'Target' : 'Partial';
       const resCol = t.result.includes('WIN') ? '#3ecf8e' : t.result === 'LOSS' ? '#e05c6a' : '#7a8499';
 
       return `<div class="log-entry">
         <div class="log-entry-head">
           <div style="display:flex;align-items:center;flex-wrap:wrap;gap:8px;">
+            <span class="setup-pill">${t.setup}</span>
             <span class="log-dir ${t.direction}">${t.direction}</span>
             <span style="font-size:11px;color:var(--text-sub);letter-spacing:1px;">${t.contract}</span>
             ${t.result ? `<span style="font-size:13px;color:${resCol};font-weight:600;">${t.result}</span>` : ''}
@@ -1416,7 +2181,7 @@
         <div class="log-fields">
           <div class="log-field">Entry<span>${t.entry || '—'}</span></div>
           <div class="log-field">Stop / Target<span>${t.stop || '—'}</span></div>
-          <div class="log-field">${pl}<span>${t.partial || '—'}${t.partialContracts && t.partialContracts !== '0' ? ' (' + t.partialContracts + ' ct)' : ''}</span></div>
+          <div class="log-field">Partial<span>${t.partial || '—'}${t.partialContracts && t.partialContracts !== '0' ? ' (' + t.partialContracts + ' ct)' : ''}</span></div>
           <div class="log-field">Final Exit<span>${t.exit || '—'}</span></div>
           <div class="log-field">Contracts<span>${t.contracts}${t.contractsAdded && t.contractsAdded !== '0' ? ' (+' + t.contractsAdded + ' added)' : ''}</span></div>
           <div class="log-field">Checklist<span>${t.done}/${t.total} (${t.pct}%)</span></div>
@@ -1436,7 +2201,7 @@
   function exportCSV() {
     if (!tradeLog.length) { alert('No trades to export.'); return; }
     const headers = [
-      'Trade #','Date','Time','Direction','Contract','$/Point',
+      'Trade #','Date','Time','Setup','Direction','Instrument','$/Point',
       'Entry','Stop/Target','Partial Exit Price','Contracts at Partial','Final Exit',
       'Contracts (Initial)','Contracts Added','Total Contracts',
       'Leg 1 Points','Leg 1 P&L ($)','Leg 2 Points','Leg 2 P&L ($)',
@@ -1445,18 +2210,18 @@
     ];
 
     const rows = tradeLog.map(t => {
-      const ppp    = t.ppp || 1;
+      const ppp = t.ppp || 1;
       const result = calcPnL(t, ppp);
-      const l1pts  = result && result.hasPartial ? result.leg1pts.toFixed(1) : '';
-      const l1pnl  = result && result.hasPartial ? result.leg1pnl.toFixed(2) : '';
-      const l2pts  = result ? result.leg2pts.toFixed(1) : '';
-      const l2pnl  = result ? result.leg2pnl.toFixed(2) : '';
-      const tpts   = result ? result.totalpts.toFixed(1) : '';
-      const tpnl   = result ? result.totalpnl.toFixed(2) : '';
+      const l1pts = result && result.hasPartial ? result.leg1pts.toFixed(1) : '';
+      const l1pnl = result && result.hasPartial ? result.leg1pnl.toFixed(2) : '';
+      const l2pts = result ? result.leg2pts.toFixed(1) : '';
+      const l2pnl = result ? result.leg2pnl.toFixed(2) : '';
+      const tpts = result ? result.totalpts.toFixed(1) : '';
+      const tpnl = result ? result.totalpnl.toFixed(2) : '';
       const totalCt = result ? result.totalCt : ((parseInt(t.contracts)||1) + (parseInt(t.contractsAdded)||0));
 
       return [
-        t.id, t.date, t.time, t.direction, t.contract, ppp,
+        t.id, t.date, t.time, t.setupName, t.direction, t.contract, ppp,
         t.entry, t.stop, t.partial, t.partialContracts || '0', t.exit,
         t.contracts, t.contractsAdded || '0', totalCt,
         l1pts, l1pnl, l2pts, l2pnl, tpts, tpnl,
@@ -1473,3 +2238,4 @@
 </script>
 </body>
 </html>
+
