@@ -161,7 +161,35 @@
   }
 
   /* ── Quick Reference ── */
-  .quick-reference { margin-bottom: 24px; }
+  .quick-reference {
+    margin-bottom: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .quick-reference summary {
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .quick-reference summary::-webkit-details-marker { display: none; }
+
+  .quick-reference summary::after {
+    content: '▾';
+    color: var(--text-sub);
+    font-size: 13px;
+    transition: transform 0.15s ease;
+  }
+
+  .quick-reference:not([open]) summary::after { transform: rotate(-90deg); }
 
   .quick-label {
     font-size: 11px;
@@ -170,6 +198,13 @@
     text-transform: uppercase;
     color: var(--text-sub);
     margin-bottom: 10px;
+  }
+
+  .quick-reference summary .quick-label { margin-bottom: 0; }
+
+  .quick-reference-inner {
+    padding: 0 12px 12px;
+    overflow-x: auto;
   }
 
   .quick-table {
@@ -746,63 +781,65 @@
   <div class="divider"></div>
 
   <!-- Quick Reference -->
-  <div class="quick-reference">
-    <div class="quick-label">Quick Reference</div>
-    <table class="quick-table">
-      <thead>
-        <tr>
-          <th>Setup</th>
-          <th>Trigger</th>
-          <th>Entry</th>
-          <th>Target</th>
-          <th>Stop</th>
-          <th>Frequency</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="setup-pill pill-scalp">01 Scalp</span></td>
-          <td>Price enters lower Scalp Zone</td>
-          <td>C1 on touch · C2 optional on close inside zone</td>
-          <td>Partial at 50% back to 3M TMA · Full at 3M TMA</td>
-          <td>Beyond zone boundary</td>
-          <td>Low–moderate</td>
-        </tr>
-        <tr>
-          <td><span class="setup-pill pill-extreme">02 Extreme</span></td>
-          <td>Price hits downside MMA/TMA Extreme level</td>
-          <td>C1 on touch · C2 optional on close beyond level</td>
-          <td>Partial at 15M TMA · Full at generating MA</td>
-          <td>Beyond Extreme level</td>
-          <td>Low</td>
-        </tr>
-        <tr>
-          <td><span class="setup-pill pill-reversion">03 Reversion</span></td>
-          <td>TMA curls up toward TRMA with space</td>
-          <td>On 3M TMA curl confirmation</td>
-          <td>TRMA</td>
-          <td>TMA curls back down</td>
-          <td>Moderate–high</td>
-        </tr>
-        <tr>
-          <td><span class="setup-pill pill-trend">04 Trend</span></td>
-          <td>TRMA changes direction</td>
-          <td>On TRMA slope flip candle</td>
-          <td>Hold until TRMA reverses</td>
-          <td>TRMA reverses direction</td>
-          <td>Low</td>
-        </tr>
-        <tr>
-          <td><span class="setup-pill pill-continuation">05 Continuation</span></td>
-          <td>TMA pulls back to TRMA then curls</td>
-          <td>On TMA re-curl · TMA must stay on correct side</td>
-          <td>Prior swing high/low or Extreme</td>
-          <td>TMA crosses back through TRMA</td>
-          <td>Moderate</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <details class="quick-reference" open>
+    <summary><div class="quick-label">Quick Reference</div></summary>
+    <div class="quick-reference-inner">
+      <table class="quick-table">
+        <thead>
+          <tr>
+            <th>Setup</th>
+            <th>Trigger</th>
+            <th>Entry</th>
+            <th>Target</th>
+            <th>Stop</th>
+            <th>Frequency</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="setup-pill pill-scalp">01 Scalp</span></td>
+            <td>Price enters the Scalp Zone</td>
+            <td>Take the contract on zone entry</td>
+            <td>Quick reversion toward the 3M TMA</td>
+            <td>Close below Scalp Zone</td>
+            <td>Low–moderate</td>
+          </tr>
+          <tr>
+            <td><span class="setup-pill pill-extreme">02 Extreme</span></td>
+            <td>Price hits downside MMA/TMA Extreme level</td>
+            <td>C1 on touch · C2 optional on close beyond level</td>
+            <td>Partial at 15M TMA · Full at generating MA</td>
+            <td>Beyond Extreme level</td>
+            <td>Low</td>
+          </tr>
+          <tr>
+            <td><span class="setup-pill pill-reversion">03 Reversion</span></td>
+            <td>TMA curls up toward TRMA with space</td>
+            <td>On 3M TMA curl confirmation</td>
+            <td>TRMA</td>
+            <td>TMA curls back down</td>
+            <td>Moderate–high</td>
+          </tr>
+          <tr>
+            <td><span class="setup-pill pill-trend">04 Trend</span></td>
+            <td>TRMA changes direction</td>
+            <td>On TRMA slope flip candle</td>
+            <td>Hold until TRMA reverses</td>
+            <td>TRMA reverses direction</td>
+            <td>Low</td>
+          </tr>
+          <tr>
+            <td><span class="setup-pill pill-continuation">05 Continuation</span></td>
+            <td>TMA pulls back to TRMA then curls</td>
+            <td>On TMA re-curl · TMA must stay on correct side</td>
+            <td>Prior swing high/low or Extreme</td>
+            <td>TMA crosses back through TRMA</td>
+            <td>Moderate</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
 
   <!-- Tabs -->
   <div class="tabs">
@@ -830,7 +867,7 @@
   <div id="panel-scalp" class="panel active">
     <div class="setup-summary">
       <h2>01 — The Scalp <span class="setup-badge badge-long">LONG ONLY</span><span class="setup-badge badge-3m">3M ONLY</span></h2>
-      <p>Price stretches into the auto-generated lower Scalp Zone and reverts to the 3M TMA.</p>
+      <p>Price enters the Scalp Zone and looks for a quick reversion back toward the 3M TMA.</p>
     </div>
 
     <div class="step-section">
@@ -839,15 +876,15 @@
         <div class="check-item" onclick="toggle(this, event)">
           <input type="checkbox">
           <div>
-            <div class="item-main">Price touches or enters the lower Scalp Zone.</div>
-            <div class="item-sub">Lower zone only. This setup is long only.</div>
+            <div class="item-main">Price enters the Scalp Zone between the two Scalp labels.</div>
+            <div class="item-sub">The Scalp Zone itself is the trigger. This setup is long only and 3M only.</div>
           </div>
         </div>
         <div class="check-item" onclick="toggle(this, event)">
           <input type="checkbox">
           <div>
-            <div class="item-main">Scalp Zone is auto-calculated by the TMT indicator.</div>
-            <div class="item-sub">No manual level creation. Use the generated zone.</div>
+            <div class="item-main">3M TMA is the reversion target.</div>
+            <div class="item-sub">This is not a trend trade. The goal is a fast move back toward mean.</div>
           </div>
         </div>
       </div>
@@ -859,15 +896,15 @@
         <div class="check-item" onclick="toggle(this, event)">
           <input type="checkbox">
           <div>
-            <div class="item-main">Contract 1 — taken the moment price first touches or enters the lower zone.</div>
-            <div class="item-sub">Do not wait for TMA confirmation. Zone touch is the trigger.</div>
+            <div class="item-main">Take the contract when price enters the Scalp Zone.</div>
+            <div class="item-sub">Do not wait for TMA confirmation. Price inside the zone is the entry trigger.</div>
           </div>
         </div>
         <div class="check-item" onclick="toggle(this, event)">
           <input type="checkbox">
           <div>
-            <div class="item-main">Contract 2 — optional add if a candle closes inside the zone.</div>
-            <div class="item-sub">Add only after the candle close validates the zone hold.</div>
+            <div class="item-main">Optional add only if the candle closes inside the Scalp Zone.</div>
+            <div class="item-sub">The add is optional. The core trade is the first contract taken inside the zone.</div>
           </div>
         </div>
       </div>
@@ -879,15 +916,15 @@
         <div class="check-item" onclick="toggle(this, event)">
           <input type="checkbox">
           <div>
-            <div class="item-main">Partial exit at the halfway point between zone entry and the 3M TMA.</div>
-            <div class="item-sub">Use the partial to protect the trade if price does not fully revert.</div>
+            <div class="item-main">Look for a quick reversion back toward the 3M TMA.</div>
+            <div class="item-sub">This is a fast mean-reversion trade, not a hold-and-hope trade.</div>
           </div>
         </div>
         <div class="check-item" onclick="toggle(this, event)">
           <input type="checkbox">
           <div>
-            <div class="item-main">Full exit of the remaining position when price reaches the 3M TMA.</div>
-            <div class="item-sub">The 3M TMA is the mean. Do not turn the scalp into a hope trade.</div>
+            <div class="item-main">Full exit when price reaches the 3M TMA.</div>
+            <div class="item-sub">The 3M TMA is the target. Once price gets there, the scalp is complete.</div>
           </div>
         </div>
       </div>
@@ -899,21 +936,14 @@
         <div class="check-item stop-item" onclick="toggle(this, event)">
           <input type="checkbox">
           <div>
-            <div class="item-main">STOP: Place stop beyond the lower zone boundary <span class="stop-badge">STOP</span></div>
-            <div class="item-sub">The stop belongs outside the zone, opposite the entry direction.</div>
-          </div>
-        </div>
-        <div class="check-item stop-item" onclick="toggle(this, event)">
-          <input type="checkbox">
-          <div>
-            <div class="item-main">STOP: If price closes beyond the zone without reversing, exit the full trade <span class="stop-badge">STOP</span></div>
-            <div class="item-sub">No averaging down. The zone failed.</div>
+            <div class="item-main">STOP: Exit the full trade if price closes below the Scalp Zone <span class="stop-badge">STOP</span></div>
+            <div class="item-sub">A close below the zone means the scalp failed. No averaging down and no second guessing.</div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="principle-box blue"><strong>Key principle:</strong> Direction is determined by zone. For this version, only the lower Scalp Zone is valid. Partial at 50% of the move protects profit if the 3M TMA is not fully reached.</div>
+    <div class="principle-box blue"><strong>Key principle:</strong> This is a simple, fast reversion trade. Price enters the Scalp Zone, we take the contract, and we look for a quick move back toward the 3M TMA. The zone is the setup; no extra confirmation is required.</div>
 
     <div class="progress-wrap">
       <div class="progress-row">
@@ -927,7 +957,7 @@
       <div class="trade-details-label">Trade Details</div>
       <div class="fields-grid">
         <div class="field-group"><label>Entry Price</label><input type="number" id="scalp-entry" placeholder="e.g. 42150"></div>
-        <div class="field-group"><label>Stop / Zone Boundary</label><input type="number" id="scalp-stop" placeholder="e.g. 42100"></div>
+        <div class="field-group"><label>Stop / Close Below Zone</label><input type="number" id="scalp-stop" placeholder="e.g. 42100"></div>
         <div class="field-group"><label>Contracts (Initial)</label><input type="number" id="scalp-contracts" placeholder="1" min="1"></div>
         <div class="field-group"><label>Contracts Added</label><input type="number" id="scalp-contracts-added" placeholder="0" min="0"></div>
         <div class="field-group"><label>Partial Exit Price</label><input type="number" id="scalp-partial" placeholder="e.g. 42190"></div>
@@ -940,7 +970,7 @@
           </select>
         </div>
         <div class="field-group span2"><label>Notes</label>
-          <textarea id="scalp-notes" placeholder="Zone touched, 3M TMA target, partial management..."></textarea>
+          <textarea id="scalp-notes" placeholder="Zone entry, 3M TMA target, execution notes..."></textarea>
         </div>
       </div>
     </div>
@@ -955,10 +985,10 @@
       <div class="never-box">
         <div class="never-box-title">Prohibited — No Exceptions</div>
         <div class="never-item"><div class="never-dot"></div>Enter a Scalp trade on the short side — this setup is long only.</div>
-        <div class="never-item"><div class="never-dot"></div>Use the upper Scalp Zone for this trade plan.</div>
-        <div class="never-item"><div class="never-dot"></div>Wait for 3M TMA confirmation before entering — lower zone touch is the entry.</div>
+        <div class="never-item"><div class="never-dot"></div>Enter before price is actually inside the Scalp Zone.</div>
+        <div class="never-item"><div class="never-dot"></div>Wait for 3M TMA confirmation before entering — price inside the zone is the entry.</div>
         <div class="never-item"><div class="never-dot"></div>Chase price after it has already moved away from the Scalp Zone.</div>
-        <div class="never-item"><div class="never-dot"></div>Add again after price closes beyond the failed zone.</div>
+        <div class="never-item"><div class="never-dot"></div>Add again after price closes below the Scalp Zone.</div>
         <div class="never-item"><div class="never-dot"></div>Hold past the 3M TMA without a defined runner plan.</div>
       </div>
     </div>
@@ -2027,4 +2057,3 @@
 </script>
 </body>
 </html>
-
