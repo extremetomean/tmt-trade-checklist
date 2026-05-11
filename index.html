@@ -243,11 +243,11 @@
     white-space: nowrap;
   }
 
-  .pill-scalp { background: #dceeff; color: #0b4275; }
-  .pill-extreme { background: #ffe3e3; color: #842020; }
-  .pill-reversion { background: #fff0d8; color: #663b10; }
+  .pill-scalp { background: #ddf7eb; color: #0d6245; }
+  .pill-extreme { background: #ddf7eb; color: #0d6245; }
+  .pill-reversion { background: #ddf7eb; color: #0d6245; }
   .pill-trend { background: #e7f5df; color: #255c1d; }
-  .pill-continuation { background: #eceaff; color: #312783; }
+  .pill-continuation { background: #e7f5df; color: #255c1d; }
 
   /* ── Tabs ── */
   .tabs {
@@ -284,16 +284,20 @@
   .tab:hover { border-color: #4a5070; color: var(--text); }
   .tab:hover .tab-sub { color: var(--text-sub); }
 
-  .tab.active-scalp { background: #0d1525; border-color: var(--blue); color: var(--blue); }
-  .tab.active-scalp .tab-sub { color: #2a5080; }
-  .tab.active-extreme { background: #1e0d0d; border-color: var(--red); color: var(--red); }
-  .tab.active-extreme .tab-sub { color: #804040; }
-  .tab.active-reversion { background: #201a08; border-color: var(--yellow); color: var(--yellow); }
-  .tab.active-reversion .tab-sub { color: #806030; }
-  .tab.active-trend { background: #0d1f10; border-color: var(--green); color: var(--green); }
-  .tab.active-trend .tab-sub { color: #2a8060; }
-  .tab.active-continuation { background: #15112a; border-color: var(--purple); color: var(--purple); }
-  .tab.active-continuation .tab-sub { color: #6f67bb; }
+  .tab.active-scalp,
+  .tab.active-extreme,
+  .tab.active-reversion,
+  .tab.active-trend,
+  .tab.active-continuation { background: #0d1f10; border-color: var(--green); color: var(--green); }
+  .tab.active-scalp .tab-sub,
+  .tab.active-extreme .tab-sub,
+  .tab.active-reversion .tab-sub,
+  .tab.active-trend .tab-sub,
+  .tab.active-continuation .tab-sub { color: #2a8060; }
+  .tab.active-trend.active-short-mode,
+  .tab.active-continuation.active-short-mode { background: #1e0d0d; border-color: var(--red); color: var(--red); }
+  .tab.active-trend.active-short-mode .tab-sub,
+  .tab.active-continuation.active-short-mode .tab-sub { color: #804040; }
   .tab.active-log { background: var(--surface2); border-color: #505050; color: var(--text); }
   .tab.active-log .tab-sub { color: var(--text-sub); }
 
@@ -336,7 +340,7 @@
 
   .badge-long { background: #0d3020; color: var(--green); }
   .badge-both { background: #202020; color: var(--text-sub); border: 1px solid var(--border); }
-  .badge-3m { background: #0d1525; color: var(--blue); }
+  .badge-3m { background: #0d3020; color: var(--green); }
 
   /* ── Direction Subsections ── */
   .direction-toggle {
@@ -392,13 +396,13 @@
     background: var(--border);
   }
 
-  .step-label.long { color: var(--green); }
+  .step-label.long,
+  .step-label.reversion,
+  .step-label.scalp,
+  .step-label.extreme,
+  .step-label.trend,
+  .step-label.continuation { color: var(--green); }
   .step-label.short { color: var(--red); }
-  .step-label.reversion { color: var(--yellow); }
-  .step-label.scalp { color: var(--blue); }
-  .step-label.extreme { color: var(--red); }
-  .step-label.trend { color: var(--green); }
-  .step-label.continuation { color: var(--purple); }
 
   /* ── Check items ── */
   .check-group {
@@ -453,6 +457,12 @@
     font-size: 13px;
     color: #000;
     font-weight: 900;
+  }
+
+  #panel-trend.short-active input[type="checkbox"]:checked,
+  #panel-continuation.short-active input[type="checkbox"]:checked {
+    background: var(--red);
+    border-color: var(--red);
   }
 
   .item-main {
@@ -890,7 +900,7 @@
           <input type="checkbox">
           <div>
             <div class="item-main">Take a half position when price enters the Scalp Zone.</div>
-            <div class="item-sub">Do not wait for a confirmation. Price inside the zone is the initial entry trigger.</div>
+            <div class="item-sub">Do not wait for a confirmation. Price inside the zone is the entry trigger.</div>
           </div>
         </div>
         <div class="check-item" onclick="toggle(this, event)">
@@ -936,7 +946,7 @@
       </div>
     </div>
 
-    <div class="principle-box blue"><strong>Key principle:</strong> Price enters the Scalp Zone, we take the contract, and we look for a quick reversion back toward the 3M TMA. Partial at the halfway move back to the mean; full exit at the 3M TMA.</div>
+    <div class="principle-box green"><strong>Key principle:</strong> Price enters the Scalp Zone, we take the contract, and we look for a quick reversion back toward the 3M TMA. Partial at the halfway move back to the mean; full exit at the 3M TMA.</div>
 
     <div class="progress-wrap">
       <div class="progress-row">
@@ -1088,7 +1098,7 @@
       </div>
     </div>
 
-    <div class="principle-box red"><strong>Key principle:</strong> The target moving average always matches the Extreme level that triggered the trade. This setup is long only, so only downside Extreme levels are valid.</div>
+    <div class="principle-box green"><strong>Key principle:</strong> The target moving average always matches the Extreme level that triggered the trade. This setup is long only, so only downside Extreme levels are valid.</div>
 
     <div class="progress-wrap">
       <div class="progress-row">
@@ -1233,7 +1243,7 @@
       </div>
     </div>
 
-    <div class="principle-box"><strong>Key principle:</strong> This is the primary bread-and-butter setup. Trades 01 and 02 revert price to the TMA. This trade reverts the TMA to the TRMA — one structural level higher. Space between the MAs is the non-negotiable prerequisite.</div>
+    <div class="principle-box green"><strong>Key principle:</strong> This is the primary bread-and-butter setup. Trades 01 and 02 revert price to the TMA. This trade reverts the TMA to the TRMA — one structural level higher. Space between the MAs is the non-negotiable prerequisite.</div>
 
     <div class="progress-wrap">
       <div class="progress-row">
@@ -1285,7 +1295,7 @@
   </div><!-- /reversion -->
 
   <!-- ══════════════════════════════════════════ 04 TREND -->
-  <div id="panel-trend" class="panel">
+  <div id="panel-trend" class="panel long-active">
     <div class="setup-summary">
       <h2>04 — The Trend <span class="setup-badge badge-both">LONG OR SHORT</span></h2>
       <p>TRMA changes direction — ride the new trend until it reverses.</p>
@@ -1446,7 +1456,7 @@
       </div>
     </div>
 
-    <div class="principle-box green"><strong>Key principle:</strong> This is the lowest-frequency, highest-duration setup. When the TRMA flips, you ride the entire trend. Entry is the flip candle. Exit is the next flip. No discretion required at any point.</div>
+    <div id="trend-principle" class="principle-box green"><strong>Key principle:</strong> This is the lowest-frequency, highest-duration setup. When the TRMA flips, you ride the entire trend. Entry is the flip candle. Exit is the next flip. No discretion required at any point.</div>
 
     <div class="progress-wrap">
       <div class="progress-row">
@@ -1497,7 +1507,7 @@
   </div><!-- /trend -->
 
   <!-- ══════════════════════════════════════════ 05 CONTINUATION -->
-  <div id="panel-continuation" class="panel">
+  <div id="panel-continuation" class="panel long-active">
     <div class="setup-summary">
       <h2>05 — The Continuation <span class="setup-badge badge-both">LONG OR SHORT</span></h2>
       <p>After a trend is established, the TMA pulls back to the TRMA and re-curls — enter the next leg.</p>
@@ -1686,7 +1696,7 @@
       </div>
     </div>
 
-    <div class="principle-box purple"><strong>Key principle:</strong> The trend is already established. You are entering the second or third push — not the initial reversal. The TMA must remain on the correct side of the TRMA at all times. A cross invalidates the trade immediately.</div>
+    <div id="continuation-principle" class="principle-box green"><strong>Key principle:</strong> The trend is already established. You are entering the second or third push — not the initial reversal. The TMA must remain on the correct side of the TRMA at all times. A cross invalidates the trade immediately.</div>
 
     <div class="progress-wrap">
       <div class="progress-row">
@@ -1832,12 +1842,20 @@
     const map = ['scalp','extreme','reversion','trend','continuation','log'];
     const cls = ['active-scalp','active-extreme','active-reversion','active-trend','active-continuation','active-log'];
     const i = map.indexOf(name);
-    if (i >= 0) document.querySelectorAll('.tab')[i].classList.add(cls[i]);
+    if (i >= 0) {
+      const tab = document.querySelectorAll('.tab')[i];
+      tab.classList.add(cls[i]);
+      if ((name === 'trend' || name === 'continuation') && getActiveSide(name) === 'SHORT') {
+        tab.classList.add('active-short-mode');
+      }
+    }
     updateProgress(name);
   }
 
   function switchSide(panelId, side) {
     const panel = document.getElementById('panel-' + panelId);
+    panel.classList.toggle('long-active', side === 'long');
+    panel.classList.toggle('short-active', side === 'short');
     panel.querySelectorAll('.direction-btn').forEach(btn => {
       btn.className = 'direction-btn';
       if (btn.dataset.side === side) btn.classList.add(side === 'long' ? 'active-long' : 'active-short');
@@ -1845,6 +1863,22 @@
     panel.querySelectorAll('.side-content').forEach(content => {
       content.classList.toggle('active', content.dataset.side === side);
     });
+    const principle = document.getElementById(panelId + '-principle');
+    if (principle) {
+      principle.classList.remove('green', 'red');
+      principle.classList.add(side === 'long' ? 'green' : 'red');
+    }
+    if (panel.classList.contains('active')) {
+      const map = ['scalp','extreme','reversion','trend','continuation','log'];
+      const cls = ['active-scalp','active-extreme','active-reversion','active-trend','active-continuation','active-log'];
+      const i = map.indexOf(panelId);
+      if (i >= 0) {
+        const tab = document.querySelectorAll('.tab')[i];
+        tab.className = 'tab';
+        tab.classList.add(cls[i]);
+        if (side === 'short') tab.classList.add('active-short-mode');
+      }
+    }
     updateProgress(panelId);
   }
 
@@ -1889,8 +1923,9 @@
     const txt   = document.getElementById(id + '-prog-txt');
     const pctEl = document.getElementById(id + '-prog-pct');
     if (fill) {
+      const accent = panel.classList.contains('short-active') ? '#e05c6a' : '#3ecf8e';
       fill.style.width = pct + '%';
-      fill.style.background = pct === 100 ? '#3ecf8e' : pct > 60 ? '#f0c040' : '#666666';
+      fill.style.background = pct === 100 ? accent : pct > 60 ? '#f0c040' : '#666666';
     }
     if (txt)   txt.textContent   = chk.length + ' of ' + all.length + ' steps complete';
     if (pctEl) pctEl.textContent = pct + '%';
